@@ -1,0 +1,12 @@
+[2023-05-25 20:31:03] [ ERROR] [OdontologoDaoH2:38] La base de datos puede que ya esté siendo utilizada: "C:/Users/Usuario/test.mv.db". Soluciones Posibles: cierre todas las otras conexiones; use el modo server
+Database may be already in use: "C:/Users/Usuario/test.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-214]
+[2023-05-25 20:31:03] [ ERROR] [OdontologoDaoH2:54] No se pudo cerrar la base de datos Cannot invoke "java.sql.Connection.close()" because "connection" is null
+[2023-05-25 20:31:40] [ ERROR] [OdontologoDaoH2:38] La base de datos puede que ya esté siendo utilizada: "C:/Users/Usuario/test.mv.db". Soluciones Posibles: cierre todas las otras conexiones; use el modo server
+Database may be already in use: "C:/Users/Usuario/test.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-214]
+[2023-05-25 20:31:40] [ ERROR] [OdontologoDaoH2:54] No se pudo cerrar la base de datos Cannot invoke "java.sql.Connection.close()" because "connection" is null
+[2023-05-25 20:33:09] [ ERROR] [OdontologoDaoH2:38] Table "ODONTOLOGOS" not found (this database is empty); SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES (?, ?, ?) [42104-214]
+[2023-05-25 20:33:48] [ ERROR] [OdontologoDaoH2:38] Table "ODONTOLOGOS" not found (this database is empty); SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES (?, ?, ?) [42104-214]
+[2023-05-25 20:41:12] [ ERROR] [OdontologoDaoH2:38] Table "ODONTOLOGOS" not found (this database is empty); SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES (?, ?, ?) [42104-214]
