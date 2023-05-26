@@ -17,3 +17,44 @@ INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES (?, ?, ?) [42104-21
 [2023-05-25 21:00:15] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: MariaRodriguez
 [2023-05-25 21:01:43] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: Maria Rodriguez
 [2023-05-25 21:01:56] [ INFO ] [OdontologoDaoH2:77] Listado de odontologos: [com.backend.entity.Odontologo@4e928fbf, com.backend.entity.Odontologo@352ff4da, com.backend.entity.Odontologo@3224a577, com.backend.entity.Odontologo@2e32ccc5, com.backend.entity.Odontologo@748741cb]
+[2023-05-26 00:37:52] [ INFO ] [OdontologoDaoH2:77] Listado de odontologos: [com.backend.entity.Odontologo@7d322cad, com.backend.entity.Odontologo@21be3395, com.backend.entity.Odontologo@4f49f6af]
+[2023-05-26 00:38:23] [ INFO ] [OdontologoDaoH2:77] Listado de odontologos: [com.backend.entity.Odontologo@7d322cad, com.backend.entity.Odontologo@21be3395, com.backend.entity.Odontologo@4f49f6af]
+[2023-05-26 00:38:41] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: Alicia Gonzalez
+[2023-05-26 00:38:49] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: José Perez
+[2023-05-26 00:38:54] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: Maria Rodriguez
+[2023-05-26 00:39:00] [ INFO ] [OdontologoDaoH2:77] Listado de odontologos: [com.backend.entity.Odontologo@7d322cad, com.backend.entity.Odontologo@21be3395, com.backend.entity.Odontologo@4f49f6af, com.backend.entity.Odontologo@78452606, com.backend.entity.Odontologo@147e2ae7, com.backend.entity.Odontologo@448c8166]
+[2023-05-26 01:06:15] [ INFO ] [OdontologoDaoEnMemoria:21] Odontologo agregado: com.backend.entity.Odontologo@229d10bd
+[2023-05-26 01:13:43] [ INFO ] [OdontologoDaoEnMemoria:21] Odontologo agregado: com.backend.entity.Odontologo@56a6d5a6
+[2023-05-26 01:13:47] [ INFO ] [OdontologoDaoEnMemoria:21] Odontologo agregado: com.backend.entity.Odontologo@56a6d5a6
+[2023-05-26 01:14:37] [ INFO ] [OdontologoDaoEnMemoria:27] Listado completo de los odontologos: 
+[]
+[2023-05-26 01:17:06] [ INFO ] [OdontologoDaoEnMemoria:27] Listado completo de los odontologos: 
+[]
+[2023-05-26 01:27:05] [ INFO ] [OdontologoDaoEnMemoria:27] Listado completo de los odontologos: 
+null
+[2023-05-26 01:27:32] [ INFO ] [OdontologoDaoH2:77] Listado de odontologos: [com.backend.entity.Odontologo@13526e59, com.backend.entity.Odontologo@2235eaab, com.backend.entity.Odontologo@17503f6b, com.backend.entity.Odontologo@3bcd05cb, com.backend.entity.Odontologo@3b6d844d, com.backend.entity.Odontologo@36804139]
+[2023-05-26 01:27:32] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: José Perez
+[2023-05-26 01:27:32] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: Maria Rodriguez
+[2023-05-26 01:27:32] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: Alicia Gonzalez
+[2023-05-26 01:27:32] [ INFO ] [OdontologoDaoEnMemoria:27] Listado completo de los odontologos: 
+null
+[2023-05-26 01:31:25] [ INFO ] [OdontologoDaoEnMemoria:28] Odontologo agregado: com.backend.entity.Odontologo@7a4ccb53
+[2023-05-26 01:31:49] [ INFO ] [OdontologoDaoEnMemoria:28] Odontologo agregado: com.backend.entity.Odontologo@7a4ccb53
+[2023-05-26 01:31:54] [ INFO ] [OdontologoDaoEnMemoria:28] Odontologo agregado: com.backend.entity.Odontologo@7a4ccb53
+[2023-05-26 01:32:05] [ INFO ] [OdontologoDaoEnMemoria:34] Listado completo de los odontologos: 
+[]
+[2023-05-26 01:32:34] [ INFO ] [OdontologoDaoEnMemoria:34] Listado completo de los odontologos: 
+[]
+[2023-05-26 01:33:02] [ INFO ] [OdontologoDaoEnMemoria:34] Listado completo de los odontologos: 
+[]
+[2023-05-26 01:36:46] [ INFO ] [OdontologoDaoH2:77] Listado de odontologos: [com.backend.entity.Odontologo@13526e59, com.backend.entity.Odontologo@2235eaab, com.backend.entity.Odontologo@17503f6b, com.backend.entity.Odontologo@3bcd05cb, com.backend.entity.Odontologo@3b6d844d, com.backend.entity.Odontologo@36804139, com.backend.entity.Odontologo@20bd8be5, com.backend.entity.Odontologo@730d2164, com.backend.entity.Odontologo@24959ca4]
+[2023-05-26 01:36:46] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: José Perez
+[2023-05-26 01:36:46] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: Maria Rodriguez
+[2023-05-26 01:36:46] [ INFO ] [OdontologoDaoH2:35] Se guardo el odontologo: Alicia Gonzalez
+[2023-05-26 01:36:46] [ INFO ] [OdontologoDaoEnMemoria:26] Odontologo agregado: com.backend.entity.Odontologo@93081b6
+[2023-05-26 01:36:46] [ INFO ] [OdontologoDaoEnMemoria:26] Odontologo agregado: com.backend.entity.Odontologo@cd1e646
+[2023-05-26 01:36:46] [ INFO ] [OdontologoDaoEnMemoria:26] Odontologo agregado: com.backend.entity.Odontologo@7ba8c737
+[2023-05-26 01:36:46] [ INFO ] [OdontologoDaoEnMemoria:32] Listado completo de los odontologos: 
+[]
+[2023-05-26 01:39:08] [ INFO ] [OdontologoDaoEnMemoria:32] Listado completo de los odontologos: 
+[]
