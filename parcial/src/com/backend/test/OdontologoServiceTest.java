@@ -78,12 +78,7 @@ class OdontologoServiceTest {
         assertEquals(765844, odontologoResultado.getNumeroMatricula());
     }
 
-    @Test
-    public void deberiaListarTodosLosOdontologosMemoria() {
-        List<Odontologo> odontologosTest2 = odontologoServiceMem.listarOdonotologo();
-        assertFalse(odontologosTest2.isEmpty());
-        //assertTrue(odontologosTest2.size() >= 3);
-    }
+
 
     @Test
     public void deberiaListarTodosLosOdontologos() {

@@ -38,25 +38,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "/home/highlander/IdeaProjects/clase14",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.ChangelistConflict"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/highlander/IdeaProjects/clase14&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.ChangelistConflict&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Usuario\IdeaProjects\melissa-bonilla_patricio-gibaut\parcial\src" />
@@ -72,7 +72,20 @@
       <recent name="com.backend.test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OdontologoServiceTest.deberiaListarTodosLosOdontologosMemoria">
+  <component name="RunManager" selected="JUnit.OdontologoServiceTest">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.backend.Application" />
+      <module name="parcial" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OdontologoServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="parcial" />
       <extension name="coverage">
@@ -88,38 +101,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OdontologoServiceTest.deberiaAgregarOdontologoEnMemoria" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="parcial" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.backend.test" />
-      <option name="MAIN_CLASS_NAME" value="com.backend.test.OdontologoServiceTest" />
-      <option name="METHOD_NAME" value="deberiaAgregarOdontologoEnMemoria" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OdontologoServiceTest.deberiaAgregarOdontologoEnMemoria2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="parcial" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.backend.test" />
-      <option name="MAIN_CLASS_NAME" value="com.backend.test.OdontologoServiceTest" />
-      <option name="METHOD_NAME" value="deberiaAgregarOdontologoEnMemoria2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OdontologoServiceTest.deberiaAgregarOdontologoEnMemoria3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="parcial" />
       <extension name="coverage">
@@ -131,6 +112,22 @@
       <option name="PACKAGE_NAME" value="com.backend.test" />
       <option name="MAIN_CLASS_NAME" value="com.backend.test.OdontologoServiceTest" />
       <option name="METHOD_NAME" value="deberiaAgregarOdontologoEnMemoria3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OdontologoServiceTest.deberiaListarTodosLosOdontologos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="parcial" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.backend.test" />
+      <option name="MAIN_CLASS_NAME" value="com.backend.test.OdontologoServiceTest" />
+      <option name="METHOD_NAME" value="deberiaListarTodosLosOdontologos" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -154,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OdontologoServiceTest.deberiaListarTodosLosOdontologosMemoria" />
         <item itemvalue="JUnit.OdontologoServiceTest" />
+        <item itemvalue="JUnit.OdontologoServiceTest.deberiaListarTodosLosOdontologos" />
+        <item itemvalue="Application.Application" />
+        <item itemvalue="JUnit.OdontologoServiceTest.deberiaListarTodosLosOdontologosMemoria" />
         <item itemvalue="JUnit.OdontologoServiceTest.deberiaAgregarOdontologoEnMemoria3" />
-        <item itemvalue="JUnit.OdontologoServiceTest.deberiaAgregarOdontologoEnMemoria2" />
-        <item itemvalue="JUnit.OdontologoServiceTest.deberiaAgregarOdontologoEnMemoria" />
       </list>
     </recent_temporary>
   </component>
