@@ -23,12 +23,13 @@ public class OdontologoDaoEnMemoria implements IDao<Odontologo> {
     @Override
     public Odontologo guardar(Odontologo odontologo) {
         odontologoRepository.add(odontologo);
-        LOGGER.info("Odontologo agregado: " + odontologo);
+        LOGGER.info("Odontologo agregado: " + odontologo.getNombre() + " " + odontologo.getApellido());
         return odontologo;
     }
 
     @Override
     public List<Odontologo> listarTodos() {
+
         LOGGER.info("Listado completo de los odontologos: \n" + odontologoRepository);
         return odontologoRepository;
     }

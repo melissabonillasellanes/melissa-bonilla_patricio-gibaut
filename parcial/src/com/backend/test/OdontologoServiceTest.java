@@ -83,6 +83,7 @@ class OdontologoServiceTest {
     @Test
     public void deberiaListarTodosLosOdontologos() {
         List<Odontologo> odontologosTest = odontologoService.listarOdonotologo();
+
         assertFalse(odontologosTest.isEmpty());
         assertTrue(odontologosTest.size() >= 3);
     }

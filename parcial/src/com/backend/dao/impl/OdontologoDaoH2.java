@@ -73,8 +73,11 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
                 Odontologo odontologo = new Odontologo(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4));
                 odontologos.add(odontologo);
             }
+            LOGGER.info("Listado de odontologos:");
+            for (Odontologo odontologo : odontologos) {
+                LOGGER.info(odontologo.getNombre() + " " + odontologo.getApellido());
+            }
 
-            LOGGER.info("Listado de odontologos: " + odontologos);
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
