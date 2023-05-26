@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="364e1bd3-e2bb-4101-99be-19c643d27a73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/create.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/backend/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/backend/dao/H2Connection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/backend/dao/IDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/backend/dao/impl/OdontologoDaoEnMemoria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/backend/dao/impl/OdontologoDaoH2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/backend/entity/Odontologo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/backend/service/OdontologoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/backend/test/OdontologoServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parcial.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parcial.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logfile.log" beforeDir="false" afterPath="$PROJECT_DIR$/logfile.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/parcial/com/backend/dao/impl/OdontologoDaoH2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/parcial/com/backend/dao/impl/OdontologoDaoH2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/parcial/com/backend/test/OdontologoServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/parcial/com/backend/test/OdontologoServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/backend/dao/impl/OdontologoDaoH2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/backend/dao/impl/OdontologoDaoH2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/backend/test/OdontologoServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/backend/test/OdontologoServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +72,7 @@
       <recent name="com.backend.test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="JUnit.OdontologoServiceTest.deberiaListarTodosLosOdontologos">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.backend.Application" />
       <module name="parcial" />
@@ -107,10 +102,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OdontologoServiceTest.deberiaAgregarUnOdontologo1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="parcial" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.backend.test" />
+      <option name="MAIN_CLASS_NAME" value="com.backend.test.OdontologoServiceTest" />
+      <option name="METHOD_NAME" value="deberiaAgregarUnOdontologo1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OdontologoServiceTest.deberiaAgregarUnOdontologo2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="parcial" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.backend.test" />
+      <option name="MAIN_CLASS_NAME" value="com.backend.test.OdontologoServiceTest" />
+      <option name="METHOD_NAME" value="deberiaAgregarUnOdontologo2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OdontologoServiceTest.deberiaListarTodosLosOdontologos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="parcial" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.backend.test" />
+      <option name="MAIN_CLASS_NAME" value="com.backend.test.OdontologoServiceTest" />
+      <option name="METHOD_NAME" value="deberiaListarTodosLosOdontologos" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application" />
+        <item itemvalue="JUnit.OdontologoServiceTest.deberiaListarTodosLosOdontologos" />
+        <item itemvalue="JUnit.OdontologoServiceTest.deberiaAgregarUnOdontologo2" />
         <item itemvalue="JUnit.OdontologoServiceTest.deberiaAgregarUnOdontologo" />
+        <item itemvalue="JUnit.OdontologoServiceTest.deberiaAgregarUnOdontologo1" />
+        <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
   </component>

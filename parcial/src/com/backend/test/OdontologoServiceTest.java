@@ -6,6 +6,7 @@ import com.backend.service.OdontologoService;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,5 +24,30 @@ class OdontologoServiceTest {
         assertEquals(34567, odontologoResultado.getNumeroMatricula());
     }
 
+    @Test
+    public void deberiaAgregarUnOdontologo1() {
+        Odontologo odontologoTest = new Odontologo(986567, "José", "Perez");
+
+        Odontologo odontologoResultado = odontologoService.guardarOdontologo(odontologoTest);
+
+        assertNotNull(odontologoResultado);
+        assertEquals(986567, odontologoResultado.getNumeroMatricula());
+    }
+
+    @Test
+    public void deberiaAgregarUnOdontologo2() {
+        Odontologo odontologoTest = new Odontologo(765844, "Maria", "Rodriguez");
+
+        Odontologo odontologoResultado = odontologoService.guardarOdontologo(odontologoTest);
+
+        assertNotNull(odontologoResultado);
+        assertEquals(765844, odontologoResultado.getNumeroMatricula());
+    }
+    @Test
+    public void deberiaListarTodosLosOdontologos() {
+        List<Odontologo> odontologosTest = odontologoService.listarOdonotologo();
+        assertFalse(odontologosTest.isEmpty());
+        assertTrue(odontologosTest.size() >= 3);
+    }
 
 }

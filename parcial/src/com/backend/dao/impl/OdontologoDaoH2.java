@@ -32,7 +32,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
             }
 
             connection.commit();
-            LOGGER.info("Se guardo el odontologo: " + odontologo);
+            LOGGER.info("Se guardo el odontologo: " + odontologo.getNombre() + " " + odontologo.getApellido());
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
