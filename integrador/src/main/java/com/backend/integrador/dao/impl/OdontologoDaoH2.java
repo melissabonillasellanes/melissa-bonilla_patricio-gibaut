@@ -3,7 +3,9 @@ package com.backend.integrador.dao.impl;
 import com.backend.integrador.dao.H2Connection;
 import com.backend.integrador.dao.IDao;
 import com.backend.integrador.entity.Odontologo;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.List;
 
 public class OdontologoDaoH2 implements IDao<Odontologo> {
 
-    private static final Logger LOGGER = Logger.getLogger(OdontologoDaoH2.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OdontologoDaoH2.class);
 
     @Override
     public List<Odontologo> listarTodos() {
@@ -105,7 +107,17 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
     }
 
     @Override
-    public List<Odontologo> listarPorId(int id) {
+    public Odontologo listarPorId(int id) {
+        return null;
+    }
+
+    @Override
+    public Odontologo buscarPorCriterio(String dni) {
+        return null;
+    }
+
+    @Override
+    public Odontologo actualizar(Odontologo odontologo) {
         return null;
     }
 }

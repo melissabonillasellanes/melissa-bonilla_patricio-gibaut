@@ -12,7 +12,7 @@ public interface IDao <T> {
 
     void eliminar(int id);
 
-    List<T> listarPorId(int id);
+    T listarPorId(int id);
 
     T buscarPorCriterio(String dni);
 

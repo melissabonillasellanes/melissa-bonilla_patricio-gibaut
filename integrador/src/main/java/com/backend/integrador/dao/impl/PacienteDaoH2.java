@@ -4,7 +4,7 @@ import com.backend.integrador.dao.H2Connection;
 import com.backend.integrador.dao.IDao;
 import com.backend.integrador.entity.Domicilio;
 import com.backend.integrador.entity.Paciente;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
@@ -20,14 +20,14 @@ public class PacienteDaoH2 implements IDao<Paciente> {
 
 
     @Override
-    public Paciente guardar(Paciente paciente) {
+    public Paciente agregar(Paciente paciente) {
         Connection connection = null;
         try {
             connection = H2Connection.getConnection();
             connection.setAutoCommit(false);
 
             DomicilioDaoH2 domicilioDaoH2 = new DomicilioDaoH2();
-            domicilioDaoH2.guardar(paciente.getDomicilio());
+            domicilioDaoH2.agregar(paciente.getDomicilio());
 
             PreparedStatement ps = connection.prepareStatement("INSERT INTO PACIENTES (NOMBRE, APELLIDO, DNI, FECHA, DOMICILIO_ID) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, paciente.getNombre());
@@ -100,6 +100,12 @@ public class PacienteDaoH2 implements IDao<Paciente> {
         return pacientes;
     }
 
+
+    @Override
+    public void modificar(Paciente paciente) {
+
+    }
+
     @Override
     public void eliminar(int id) {
         Connection connection = null;
@@ -137,8 +143,9 @@ public class PacienteDaoH2 implements IDao<Paciente> {
 
     }
 
+
     @Override
-    public Paciente buscarPorId(int id) {
+    public Paciente listarPorId(int id) {
         Connection connection = null;
         Paciente paciente = null;
         try {
@@ -245,8 +252,8 @@ public class PacienteDaoH2 implements IDao<Paciente> {
         String apellidoPaciente = resultSet.getString("apellido");
         int dniPaciente = resultSet.getInt("dni");
         LocalDate fechaIngreso = resultSet.getDate("fecha").toLocalDate();
-        Domicilio domicilioPaciente = new DomicilioDaoH2().buscarPorId(resultSet.getInt("domicilio_id"));
-        return new Paciente(idPaciente, nombrePaciente, apellidoPaciente, dniPaciente, fechaIngreso, domicilioPaciente);
+        Domicilio domicilioPaciente = new DomicilioDaoH2().listarPorId(resultSet.getInt("domicilio_id"));
+        return new Paciente(idPaciente, nombrePaciente, apellidoPaciente, domicilioPaciente, dniPaciente, fechaIngreso);
     }
 
 

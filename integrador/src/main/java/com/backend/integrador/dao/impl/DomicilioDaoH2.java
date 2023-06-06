@@ -6,26 +6,24 @@ import com.backend.integrador.entity.Domicilio;
 import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DomicilioDaoH2 implements IDao<Domicilio> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DomicilioDaoH2.class);
+    private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(DomicilioDaoH2.class);
 
 
     @Override
-    public Domicilio guardar(Domicilio domicilio) {
+    public Domicilio agregar(Domicilio domicilio) {
         Connection connection = null;
         try {
             connection = H2Connection.getConnection();
             connection.setAutoCommit(false);
 
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO DOMICILIOS (CALLE, NUMERO, LOCALIDAD, PROVINCIA) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO DOMICILIOS (CALLE, NUMERO, CIUDAD, DEPARTAMENTO, PAIS, CODPOSTAL) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, domicilio.getCalle());
             ps.setInt(2, domicilio.getNumero());
             ps.setString(3, domicilio.getCiudad());
@@ -75,7 +73,7 @@ public class DomicilioDaoH2 implements IDao<Domicilio> {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM DOMICILIOS");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Domicilio domicilio = new Domicilio(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5));
+                Domicilio domicilio = new Domicilio(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7));
                 domicilios.add(domicilio);
             }
 
@@ -94,6 +92,12 @@ public class DomicilioDaoH2 implements IDao<Domicilio> {
             }
         }
         return domicilios;
+    }
+
+
+    @Override
+    public void modificar(Domicilio domicilio) {
+
     }
 
     @Override
@@ -133,8 +137,10 @@ public class DomicilioDaoH2 implements IDao<Domicilio> {
 
     }
 
-    @Override
-    public Domicilio buscarPorId(int id) {
+
+
+
+    public Domicilio listarPorId(int id) {   // si bien retorna solo un objeto, en el IDAO requiere que el tipo sea List
         Domicilio domicilio = null;
         Connection connection = null;
         try {
@@ -145,7 +151,7 @@ public class DomicilioDaoH2 implements IDao<Domicilio> {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                domicilio = new Domicilio(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5));
+                domicilio = new Domicilio(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7));
             }
 
             LOGGER.info("Se ha encontrado el domicilio: " + domicilio);
