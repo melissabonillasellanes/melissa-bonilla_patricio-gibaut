@@ -14,4 +14,7 @@ public interface IDao <T> {
 
     List<T> listarPorId(int id);
 
+    T buscarPorCriterio(String dni);
+
+    T actualizar(T odontologo);
 }

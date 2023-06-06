@@ -2,12 +2,10 @@ package com.backend.integrador;
 
 import com.backend.integrador.dao.impl.OdontologoDaoH2;
 import com.backend.integrador.entity.Odontologo;
-import com.backend.integrador.service.OdontologoService;
+import com.backend.integrador.service.impl.OdontologoService;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
