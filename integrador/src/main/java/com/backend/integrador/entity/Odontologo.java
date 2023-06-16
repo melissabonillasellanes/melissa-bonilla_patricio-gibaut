@@ -3,18 +3,18 @@ package com.backend.integrador.entity;
 public class Odontologo {
 
     private Long id;
-    private int numeroMatricula;
+    private String numeroMatricula;
     private String nombre;
     private String apellido;
 
-    public Odontologo(Long id, int numeroMatricula, String nombre, String apellido) {
+    public Odontologo(Long id, String numeroMatricula, String nombre, String apellido) {
         this.id = id;
         this.numeroMatricula = numeroMatricula;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    public Odontologo(int numeroMatricula, String nombre, String apellido) {
+    public Odontologo(String numeroMatricula, String nombre, String apellido) {
         this.numeroMatricula = numeroMatricula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -28,11 +28,11 @@ public class Odontologo {
         this.id = id;
     }
 
-    public int getNumeroMatricula() {
+    public String getNumeroMatricula() {
         return numeroMatricula;
     }
 
-    public void setNumeroMatricula(int numeroMatricula) {
+    public void setNumeroMatricula(String numeroMatricula) {
         this.numeroMatricula = numeroMatricula;
     }
 
