@@ -8,33 +8,33 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoDto {
 
-    private String paciente;
-    private String odontologo;
+    private PacienteDto pacienteDto;
+    private OdontologoDto odontologoDto;
     private LocalDateTime fecha;
 
     public TurnoDto() {
     }
 
-    public TurnoDto(String paciente, String odontologo, LocalDateTime fecha) {
-        this.paciente = paciente;
-        this.odontologo = odontologo;
+    public TurnoDto(PacienteDto paciente, OdontologoDto odontologo, LocalDateTime fecha) {
+        this.pacienteDto = paciente;
+        this.odontologoDto = odontologo;
         this.fecha = fecha;
     }
 
-    public String getPaciente() {
-        return paciente;
+    public PacienteDto getPaciente() {
+        return pacienteDto;
     }
 
-    public void setPaciente(String paciente) {
-        this.paciente = paciente;
+    public void setPaciente(PacienteDto paciente) {
+        this.pacienteDto = paciente;
     }
 
-    public String getOdontologo() {
-        return odontologo;
+    public OdontologoDto getOdontologo() {
+        return odontologoDto;
     }
 
-    public void setOdontologo(String odontologo) {
-        this.odontologo = odontologo;
+    public void setOdontologo(OdontologoDto odontologo) {
+        this.odontologoDto = odontologo;
     }
 
     public LocalDateTime getFecha() {
@@ -45,9 +45,13 @@ public class TurnoDto {
         this.fecha = fecha;
     }
 
+    /*  ESTO ERA DE DAO ??
+
     public static TurnoDto fromTurno(Turno turno) {
         String paciente = turno.getPaciente().getNombre() + " " + turno.getPaciente().getApellido();
         String odontologo = turno.getOdontologo().getNombre() + " " + turno.getOdontologo().getApellido();
-        return new TurnoDto(paciente, odontologo, turno.getFechaTurno());
+        //return new TurnoDto(paciente, odontologo, turno.getFechaTurno());
+        return null;
     }
+    */
 }

@@ -32,13 +32,13 @@ public class PacienteDaoH2 implements IDao<Paciente> {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO PACIENTES (NOMBRE, APELLIDO, DNI, FECHA, DOMICILIO_ID) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, paciente.getNombre());
             ps.setString(2, paciente.getApellido());
-            ps.setInt(3, paciente.getDni());
+            ps.setString(3, paciente.getDni());
             ps.setDate(4, Date.valueOf(paciente.getFechaAlta()));
             ps.setInt(5, paciente.getDomicilio().getId());
             ps.execute();
             ResultSet rs = ps.getGeneratedKeys();
             while (rs.next()) {
-                paciente.setId(rs.getInt(1));
+                paciente.setId(rs.getLong(1));
             }
 
             connection.commit();
@@ -212,11 +212,11 @@ public class PacienteDaoH2 implements IDao<Paciente> {
             PreparedStatement ps = connection.prepareStatement("UPDATE PACIENTES SET NOMBRE = ?, APELLIDO = ?, DNI = ?, FECHA = ?, DOMICILIO_ID = ? WHERE ID = ?");
             ps.setString(1, paciente.getNombre());
             ps.setString(2, paciente.getApellido());
-            ps.setInt(3, paciente.getDni());
+            ps.setString(3, paciente.getDni());
             ps.setDate(4, Date.valueOf(paciente.getFechaAlta()));
             ps.setInt(5, paciente.getDomicilio().getId());
 
-            ps.setInt(6, paciente.getId());
+            ps.setLong(6, paciente.getId());
             ps.execute();
             connection.commit();
             LOGGER.warn("El paciente con id " + paciente.getId() + " ha sido actualizado. " + paciente);
@@ -247,10 +247,10 @@ public class PacienteDaoH2 implements IDao<Paciente> {
 
 
     private Paciente crearObjetoPaciente(ResultSet resultSet) throws SQLException {
-        int idPaciente = resultSet.getInt("id");
+        Long idPaciente = resultSet.getLong("id");
         String nombrePaciente = resultSet.getString("nombre");
         String apellidoPaciente = resultSet.getString("apellido");
-        int dniPaciente = resultSet.getInt("dni");
+        String dniPaciente = resultSet.getString("dni");
         LocalDate fechaIngreso = resultSet.getDate("fecha").toLocalDate();
         Domicilio domicilioPaciente = new DomicilioDaoH2().listarPorId(resultSet.getInt("domicilio_id"));
         return new Paciente(idPaciente, nombrePaciente, apellidoPaciente, domicilioPaciente, dniPaciente, fechaIngreso);

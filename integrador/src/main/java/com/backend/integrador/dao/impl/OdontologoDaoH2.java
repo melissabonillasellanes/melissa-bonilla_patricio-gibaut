@@ -27,7 +27,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Odontologo odontologo = new Odontologo(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4));
+                Odontologo odontologo = new Odontologo(rs.getLong(1), rs.getInt(2), rs.getString(3), rs.getString(4));
                 odontologos.add(odontologo);
             }
             LOGGER.info("Listado de odontologos:");
@@ -66,7 +66,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
 
             ResultSet rs = ps.getGeneratedKeys();
             while (rs.next()) {
-                odontologo.setId(rs.getInt(1));
+                odontologo.setId(rs.getLong(1));
             }
 
             connection.commit();

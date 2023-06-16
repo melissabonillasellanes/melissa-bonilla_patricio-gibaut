@@ -3,7 +3,7 @@ package com.backend.integrador.dao.impl;
 import com.backend.integrador.repository.H2Connection;
 import com.backend.integrador.repository.IDao;
 import com.backend.integrador.entity.Domicilio;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DomicilioDaoH2 implements IDao<Domicilio> {
 
-    private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(DomicilioDaoH2.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DomicilioDaoH2.class);
 
 
     @Override

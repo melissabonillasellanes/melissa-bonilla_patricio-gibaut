@@ -18,7 +18,7 @@ class OdontologoServiceTest {
 	public void deberiaAgregarUnOdontologo() {
 		Odontologo odontologoTest = new Odontologo(34567, "Alicia", "Gonzalez");
 
-		Odontologo odontologoResultado = odontologoService.guardarOdontologo(odontologoTest);
+		Odontologo odontologoResultado = odontologoService.registrarOdontologo(odontologoTest);
 
 		assertNotNull(odontologoResultado);
 		assertEquals(34567, odontologoResultado.getNumeroMatricula());
@@ -28,7 +28,7 @@ class OdontologoServiceTest {
 	public void deberiaAgregarUnOdontologo1() {
 		Odontologo odontologoTest = new Odontologo(986567, "José", "Perez");
 
-		Odontologo odontologoResultado = odontologoService.guardarOdontologo(odontologoTest);
+		Odontologo odontologoResultado = odontologoService.registrarOdontologo(odontologoTest);
 
 		assertNotNull(odontologoResultado);
 		assertEquals(986567, odontologoResultado.getNumeroMatricula());
@@ -38,7 +38,7 @@ class OdontologoServiceTest {
 	public void deberiaAgregarUnOdontologo2() {
 		Odontologo odontologoTest = new Odontologo(765844, "Maria", "Rodriguez");
 
-		Odontologo odontologoResultado = odontologoService.guardarOdontologo(odontologoTest);
+		Odontologo odontologoResultado = odontologoService.registrarOdontologo(odontologoTest);
 
 		assertNotNull(odontologoResultado);
 		assertEquals(765844, odontologoResultado.getNumeroMatricula());
@@ -48,7 +48,7 @@ class OdontologoServiceTest {
 
 	@Test
 	public void deberiaListarTodosLosOdontologos() {
-		List<Odontologo> odontologosTest = odontologoService.listarOdonotologo();
+		List<Odontologo> odontologosTest = odontologoService.listarOdontologos();
 
 		assertFalse(odontologosTest.isEmpty());
 		assertTrue(odontologosTest.size() >= 3);

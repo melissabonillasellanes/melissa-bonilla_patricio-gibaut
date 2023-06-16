@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class PacienteService implements IPacienteService {
 
-    private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(PacienteService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PacienteService.class);
     private final PacienteRepository pacienteRepository;
     private final ObjectMapper objectMapper;
 
