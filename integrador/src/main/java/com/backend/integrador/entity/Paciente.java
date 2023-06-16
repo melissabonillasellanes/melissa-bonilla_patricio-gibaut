@@ -5,14 +5,14 @@ import java.util.Date;
 
 public class Paciente {
 
-    private int id;
+    private Long id;
     private String nombre;
     private String apellido;
     private Domicilio domicilio;
-    private int dni;
+    private String dni;
     private LocalDate fechaAlta;
 
-    public Paciente(int id, String nombre, String apellido, Domicilio domicilio, int dni, LocalDate fechaAlta) {
+    public Paciente(Long id, String nombre, String apellido, Domicilio domicilio, String dni, LocalDate fechaAlta) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -21,7 +21,7 @@ public class Paciente {
         this.fechaAlta = fechaAlta;
     }
 
-    public Paciente(String nombre, String apellido, Domicilio domicilio, int dni, LocalDate fechaAlta) {
+    public Paciente(String nombre, String apellido, Domicilio domicilio, String dni, LocalDate fechaAlta) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
@@ -29,11 +29,11 @@ public class Paciente {
         this.fechaAlta = fechaAlta;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,11 +61,11 @@ public class Paciente {
         this.domicilio = domicilio;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 

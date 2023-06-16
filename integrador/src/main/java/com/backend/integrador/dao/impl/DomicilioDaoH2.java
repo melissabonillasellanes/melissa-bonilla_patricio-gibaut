@@ -1,7 +1,7 @@
 package com.backend.integrador.dao.impl;
 
-import com.backend.integrador.dao.H2Connection;
-import com.backend.integrador.dao.IDao;
+import com.backend.integrador.repository.H2Connection;
+import com.backend.integrador.repository.IDao;
 import com.backend.integrador.entity.Domicilio;
 import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;

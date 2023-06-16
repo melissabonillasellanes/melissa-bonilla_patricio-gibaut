@@ -1,26 +1,33 @@
 package com.backend.integrador.service.impl;
 
-import com.backend.integrador.dao.IDao;
+import com.backend.integrador.dto.TurnoDto;
 import com.backend.integrador.entity.Turno;
+import com.backend.integrador.repository.TurnoRepository;
 import com.backend.integrador.service.ITurnoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TurnoService implements ITurnoService {
-    private IDao<Turno> turnoIDao;
+    private static final Logger LOGGER = LoggerFactory.getLogger(TurnoService.class);
+    private final TurnoRepository turnoRepository;
     private ObjectMapper objectMapper;
 
     @Autowired
-    public TurnoService(IDao<Turno> turnoIDao, ObjectMapper objectMapper) {
-        this.turnoIDao = turnoIDao;
+    public TurnoService(TurnoRepository turnoRepository, ObjectMapper objectMapper) {
+        this.turnoRepository = turnoRepository;
         this.objectMapper = objectMapper;
     }
 
     @Override
     public TurnoDto guardarTurno(Turno turno) {
-        return TurnoDto.fromTurno(turnoIDao.agregar(turno));
+        Turno turnoNuevo = turnoRepository.save(turno);
+        TurnoDto turnoDto = objectMapper.convertValue(turno)
     }
 
     @Override
@@ -38,7 +45,7 @@ public class TurnoService implements ITurnoService {
     }
 
     @Override
-    public TurnoDto buscarTurnoPorId(int id) {
+    public TurnoDto buscarTurnoPorId(Long id) {
         return TurnoDto.fromTurno(turnoIDao.listarPorId(id));
     }
 
@@ -48,7 +55,7 @@ public class TurnoService implements ITurnoService {
     }
 
     @Override
-    public void eliminarTurno(int id) {
+    public void eliminarTurno(Long id) {
         turnoIDao.eliminar(id);
     }
 }

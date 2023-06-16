@@ -3,12 +3,12 @@ package com.backend.integrador.entity;
 import java.time.LocalDateTime;
 
 public class Turno {
-    private int id;
+    private Long id;
     private Paciente paciente;
     private Odontologo odontologo;
     private LocalDateTime fechaTurno;
 
-    public Turno(int id, Paciente paciente, Odontologo odontologo, LocalDateTime fechaTurno) {
+    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDateTime fechaTurno) {
         this.id = id;
         this.paciente = paciente;
         this.odontologo = odontologo;
@@ -21,11 +21,11 @@ public class Turno {
         this.fechaTurno = fechaTurno;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

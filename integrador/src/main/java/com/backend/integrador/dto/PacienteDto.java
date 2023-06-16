@@ -7,18 +7,39 @@ import java.time.LocalDate;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PacienteDto {
+    private Long id;
     private String nombre;
     private String apellido;
-    private Domicilio domicilio;
-    private int dni;
+    private DomicilioDto domicilioDto;
+    private String dni;
     private LocalDate fechaAlta;
 
-    public PacienteDto(String nombre, String apellido, Domicilio domicilio, int dni, LocalDate fechaAlta) {
+    public PacienteDto() {
+    }
+
+    public PacienteDto(Long id, String nombre, String apellido, DomicilioDto domicilioDto, String dni, LocalDate fechaAlta) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.domicilio = domicilio;
+        this.domicilioDto = domicilioDto;
         this.dni = dni;
         this.fechaAlta = fechaAlta;
+    }
+
+    public PacienteDto(String nombre, String apellido, DomicilioDto domicilioDto, String dni, LocalDate fechaAlta) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.domicilioDto = domicilioDto;
+        this.dni = dni;
+        this.fechaAlta = fechaAlta;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -37,19 +58,19 @@ public class PacienteDto {
         this.apellido = apellido;
     }
 
-    public Domicilio getDomicilio() {
-        return domicilio;
+    public DomicilioDto getDomicilioDto() {
+        return domicilioDto;
     }
 
-    public void setDomicilio(Domicilio domicilio) {
-        this.domicilio = domicilio;
+    public void setDomicilioDto(DomicilioDto domicilioDto) {
+        this.domicilioDto = domicilioDto;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
