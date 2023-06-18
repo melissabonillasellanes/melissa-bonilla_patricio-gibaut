@@ -1,25 +1,23 @@
 package com.backend.integrador.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "turnos")
+@Table(name = "TURNOS")
 public class Turno {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private Paciente paciente;
 
-    @Column
     private Odontologo odontologo;
 
-    @Column
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime fechaTurno;
 
     public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDateTime fechaTurno) {

@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 @SpringBootApplication
-@ComponentScan
 public class Application {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);

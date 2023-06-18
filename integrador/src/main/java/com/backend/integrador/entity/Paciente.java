@@ -1,32 +1,27 @@
 package com.backend.integrador.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "pacientes")
+@Table(name = "PACIENTES")
 public class Paciente {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private String nombre;
 
-    @Column
     private String apellido;
 
-    @Column
+    @OneToOne(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Domicilio domicilio;
 
-    @Column
     private String dni;
 
-    @Column
     private LocalDate fechaAlta;
 
     public Paciente(Long id, String nombre, String apellido, Domicilio domicilio, String dni, LocalDate fechaAlta) {

@@ -45,13 +45,5 @@ public class TurnoDto {
         this.fecha = fecha;
     }
 
-    /*  ESTO ERA DE DAO ??
 
-    public static TurnoDto fromTurno(Turno turno) {
-        String paciente = turno.getPaciente().getNombre() + " " + turno.getPaciente().getApellido();
-        String odontologo = turno.getOdontologo().getNombre() + " " + turno.getOdontologo().getApellido();
-        //return new TurnoDto(paciente, odontologo, turno.getFechaTurno());
-        return null;
-    }
-    */
 }

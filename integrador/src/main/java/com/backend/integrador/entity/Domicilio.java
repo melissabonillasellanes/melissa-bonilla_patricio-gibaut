@@ -1,34 +1,32 @@
 package com.backend.integrador.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
+
 
 @Entity
-@Table(name = "domicilios")
+@Table(name = "DOMICILIOS")
 public class Domicilio {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private String calle;
 
-    @Column
     private int numero;
 
-    @Column
     private String ciudad;
 
-    @Column
     private String departamento;
 
-    @Column
     private String pais;
 
-    @Column
     private String codigoPostal;
 
-    public Domicilio(Long id, String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal) {
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "paciente_id")
+    private Paciente paciente;
+
+    public Domicilio(Long id, String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal, Paciente paciente) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
@@ -36,15 +34,17 @@ public class Domicilio {
         this.departamento = departamento;
         this.pais = pais;
         this.codigoPostal = codigoPostal;
+        this.paciente = paciente;
     }
 
-    public Domicilio(String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal) {
+    public Domicilio(String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal, Paciente paciente) {
         this.calle = calle;
         this.numero = numero;
         this.ciudad = ciudad;
         this.departamento = departamento;
         this.pais = pais;
         this.codigoPostal = codigoPostal;
+        this.paciente = paciente;
     }
 
     public Long getId() {
@@ -101,5 +101,13 @@ public class Domicilio {
 
     public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 }
