@@ -1,11 +1,25 @@
 package com.backend.integrador.entity;
 
+import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name = "odontologos")
 public class Odontologo {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String numeroMatricula;
+
+    @Column
     private String nombre;
+
+    @Column
     private String apellido;
+
 
     public Odontologo(Long id, String numeroMatricula, String nombre, String apellido) {
         this.id = id;

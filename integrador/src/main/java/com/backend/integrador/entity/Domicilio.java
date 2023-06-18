@@ -1,16 +1,34 @@
 package com.backend.integrador.entity;
 
-public class Domicilio {
+import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
 
-    private int id;
+@Entity
+@Table(name = "domicilios")
+public class Domicilio {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String calle;
+
+    @Column
     private int numero;
+
+    @Column
     private String ciudad;
+
+    @Column
     private String departamento;
+
+    @Column
     private String pais;
+
+    @Column
     private String codigoPostal;
 
-    public Domicilio(int id, String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal) {
+    public Domicilio(Long id, String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
@@ -29,11 +47,11 @@ public class Domicilio {
         this.codigoPostal = codigoPostal;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

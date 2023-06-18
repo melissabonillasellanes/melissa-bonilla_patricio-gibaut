@@ -1,11 +1,25 @@
 package com.backend.integrador.entity;
 
+import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "turnos")
 public class Turno {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private Paciente paciente;
+
+    @Column
     private Odontologo odontologo;
+
+    @Column
     private LocalDateTime fechaTurno;
 
     public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDateTime fechaTurno) {
