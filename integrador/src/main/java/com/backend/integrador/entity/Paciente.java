@@ -24,14 +24,7 @@ public class Paciente {
 
     private LocalDate fechaAlta;
 
-    public Paciente(Long id, String nombre, String apellido, Domicilio domicilio, String dni, LocalDate fechaAlta) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.domicilio = domicilio;
-        this.dni = dni;
-        this.fechaAlta = fechaAlta;
-    }
+    public Paciente(){};
 
     public Paciente(String nombre, String apellido, Domicilio domicilio, String dni, LocalDate fechaAlta) {
         this.nombre = nombre;
@@ -45,9 +38,6 @@ public class Paciente {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;

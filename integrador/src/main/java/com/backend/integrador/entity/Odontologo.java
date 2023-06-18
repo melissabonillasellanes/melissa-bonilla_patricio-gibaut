@@ -3,27 +3,25 @@ package com.backend.integrador.entity;
 import jakarta.persistence.*;
 
 
+
 @Entity
 @Table(name = "ODONTOLOGOS")
 public class Odontologo {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "VARCHAR(15)")
     private String numeroMatricula;
 
+    @Column(columnDefinition = "VARCHAR(50)")
     private String nombre;
 
+    @Column(columnDefinition = "VARCHAR(50)")
     private String apellido;
 
-
-    public Odontologo(Long id, String numeroMatricula, String nombre, String apellido) {
-        this.id = id;
-        this.numeroMatricula = numeroMatricula;
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
+    public Odontologo(){};
 
     public Odontologo(String numeroMatricula, String nombre, String apellido) {
         this.numeroMatricula = numeroMatricula;
@@ -35,9 +33,6 @@ public class Odontologo {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNumeroMatricula() {
         return numeroMatricula;

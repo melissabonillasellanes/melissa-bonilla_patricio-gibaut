@@ -26,16 +26,7 @@ public class Domicilio {
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
-    public Domicilio(Long id, String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal, Paciente paciente) {
-        this.id = id;
-        this.calle = calle;
-        this.numero = numero;
-        this.ciudad = ciudad;
-        this.departamento = departamento;
-        this.pais = pais;
-        this.codigoPostal = codigoPostal;
-        this.paciente = paciente;
-    }
+    public Domicilio(){};
 
     public Domicilio(String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal, Paciente paciente) {
         this.calle = calle;
@@ -51,9 +42,6 @@ public class Domicilio {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCalle() {
         return calle;

@@ -20,12 +20,7 @@ public class Turno {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime fechaTurno;
 
-    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDateTime fechaTurno) {
-        this.id = id;
-        this.paciente = paciente;
-        this.odontologo = odontologo;
-        this.fechaTurno = fechaTurno;
-    }
+    public Turno(){};
 
     public Turno(Paciente paciente, Odontologo odontologo, LocalDateTime fechaTurno) {
         this.paciente = paciente;
@@ -35,10 +30,6 @@ public class Turno {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Paciente getPaciente() {
