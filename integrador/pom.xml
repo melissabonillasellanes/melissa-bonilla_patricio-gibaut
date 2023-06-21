@@ -6,15 +6,16 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.1.0</version>
+		<!-- version>3.1.0</version - 2.7.12 es la version propuesta por la profe 'javax' en vez de 'jackarta' -->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.backend</groupId>
 	<artifactId>integrador</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>integrador</name>
-	<description>Proyecto Integrador</description>
+	<description>Proyecto Integrador BackEnd</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>20</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -29,6 +30,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>com.h2database</groupId>

@@ -18,7 +18,9 @@ import java.util.List;
 public class PacienteService implements IPacienteService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PacienteService.class);
+
     private final PacienteRepository pacienteRepository;
+
     private final ObjectMapper objectMapper;
 
     @Autowired
@@ -26,77 +28,41 @@ public class PacienteService implements IPacienteService {
         this.pacienteRepository = pacienteRepository;
         this.objectMapper = objectMapper;
     }
+
+
     @Override
     public PacienteDto agregarPaciente(Paciente paciente) {
-        Paciente pacienteNuevo = pacienteRepository.save(paciente);
-        DomicilioDto domicilioDto = objectMapper.convertValue(pacienteNuevo.getDomicilio(), DomicilioDto.class);
-        PacienteDto pacienteDtoNuevo = objectMapper.convertValue(pacienteNuevo, PacienteDto.class);
-        pacienteDtoNuevo.setDomicilioDto(domicilioDto);
 
-        LOGGER.info("Nuevo paciente ingresado con éxito: {}", pacienteDtoNuevo);
+        Paciente pacienteNvo = pacienteRepository.save(paciente);
+        PacienteDto pacienteDto = objectMapper.convertValue(pacienteNvo, PacienteDto.class);
 
-        return pacienteDtoNuevo;
-    }
-
-    @Override
-    public PacienteDto actualizarPaciente(Paciente paciente) {
-        Paciente pacienteAActulizar = pacienteRepository.findById(paciente.getId()).orElse(null);
-        PacienteDto pacienteActualizadoDto = null;
-
-        if (pacienteAActulizar != null) {
-            pacienteAActulizar = paciente;
-            pacienteRepository.save(pacienteAActulizar);
-
-            DomicilioDto domicilioDto = objectMapper.convertValue(pacienteAActulizar.getDomicilio(), DomicilioDto.class);
-            pacienteActualizadoDto = objectMapper.convertValue(pacienteAActulizar, PacienteDto.class);
-            pacienteActualizadoDto.setDomicilioDto(domicilioDto);
-
-            LOGGER.info("Paciente actualizado con éxito: {}", pacienteActualizadoDto);
-
-        } else LOGGER.error("No fue posible actualizar los datos, paciente no encontrado");
-
-        return pacienteActualizadoDto;
-    }
-    @Override
-    public PacienteDto buscarPacientePorId(Long id) {
-        Paciente pacienteBuscado = pacienteRepository.findById(id).orElse(null);
-        PacienteDto pacienteDto = null;
-
-        if (pacienteBuscado != null) {
-            DomicilioDto domicilioDto = objectMapper.convertValue(pacienteBuscado.getDomicilio(), DomicilioDto.class);
-            pacienteDto = objectMapper.convertValue(pacienteBuscado, PacienteDto.class);
-            pacienteDto.setDomicilioDto(domicilioDto);
-
-            LOGGER.info("Paciente encontrado: {}", pacienteDto);
-
-        } else LOGGER.info("El id no se encuentra en la base de datos");
-
+        LOGGER.info("Paciente {} agregado.", pacienteDto);
         return pacienteDto;
     }
 
     @Override
-    public List<PacienteDto> listarPacientes() {
+    public List<PacienteDto> listarTodos() {
+
         List<Paciente> pacientes = pacienteRepository.findAll();
         List<PacienteDto> pacienteDtos = pacientes.stream()
                 .map(paciente -> {
                     Domicilio dom = paciente.getDomicilio();
                     DomicilioDto domicilioDto = objectMapper.convertValue(dom, DomicilioDto.class);
-                    return new PacienteDto(paciente.getId(), paciente.getNombre(), paciente.getApellido(), domicilioDto, paciente.getDni(), paciente.getFechaAlta());
+                    return new PacienteDto(paciente.getId(),paciente.getNombre(), paciente.getApellido(), paciente.getDni(), paciente.getFechaAlta(), domicilioDto);
                 })
                 .toList();
 
-        LOGGER.info("Lista de todos los pacientes: {}", pacienteDtos);
+        LOGGER.info("Listado de pacientes {} ", pacienteDtos);
         return pacienteDtos;
     }
 
     @Override
-    public PacienteDto buscarPacientePorDni(String dni) {
+    public PacienteDto buscarPorId(Long id) {
         return null;
     }
-    @Override
-    public void eliminarPaciente(Long id) {
-        pacienteRepository.deleteById(id);
 
-        LOGGER.warn("Se ha eliminado el paciente con id: {}", id);
+    @Override
+    public PacienteDto eliminarPaciente(Long id) {
+        return null;
     }
 }

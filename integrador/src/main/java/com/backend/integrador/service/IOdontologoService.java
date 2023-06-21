@@ -6,10 +6,13 @@ import com.backend.integrador.entity.Odontologo;
 import java.util.List;
 
 public interface IOdontologoService {
-        OdontologoDto buscarOdontologoPorId(Long id);
-        List<OdontologoDto> listarOdontologos();
-        OdontologoDto agregarOdontologo(Odontologo odontologo);
-        OdontologoDto actualizarOdontologo(Odontologo odontologo);
-        void eliminarOdontologo(Long id);
-}
 
+    OdontologoDto agregarOdontologo(Odontologo odontologo);
+
+    List<OdontologoDto> listarTodos();
+
+    OdontologoDto buscarOdontologoPorId(Long id);
+
+    OdontologoDto eliminarOdontologo(Long id);
+
+}

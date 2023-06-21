@@ -1,0 +1,59 @@
+Se cambió el formato Json de LocalDateTime y anduvo
+
+Ahora con Postman se puede agregar un turno... ingresando los datos del paciente, los del odontologo, y fecha y hora del turno.
+
+>> Debería en cambio ingresar id de paciente y id de odontologo.  Y verificar que existan, sino no crear el turno.
+
+Si bien Postman me deja crear un turno y da de alta al mismo tiempo paciente y odontologo, otorgándoles un ID.
+No puedo recuperar ese ID al hacer listado GET.  //  Arreglado. tuve que agregar: en el service la mención al id. y luego un constructor en el DTO que incluya el id. esto último es porque el service usa el "new TurnoDto" para crear el listado de turnos con lo que trae de la base de datos.
+
+Hay que verificar cómo recuperar ese ID.  agregue el método getId() en los DTO.
+Pero debe haber algo en el controller que no maneja esa info. // NO! el problema estaba en el service y en el DTO. Explicado arriba.
+
+Se pudo crear una página funcional de ABM (altas, bajas y modificaciones) para Odontólogo. Sin embargo muestra también los datos en el URL, a pesar de usar método POST.
+El odontólogo es correctamente agregado, pero faltaría una página de "response", o bien mediante javascript o ajax modificar el html para mostrar que se agregó.
+Quiza este response enmascare el URL con los datos mandandos en el body.
+
+>> Generar paginas ABM para Paciente (incluyendo el domicilio)
+>> Y para Turnos.  En el caso de turnos, en lugar de generar un nuevo paciente y odontólogo, debería verificar si existen, pasando el ID (primero) o bien DNI y Matricula según sea el caso, y solo generar el turno si ambos existen previamente.
+
+>> Cómo se compatibiliza el tema de que Turno (entity) y el TurnoDTO tienen como atributos un objeto odonotólogo y un objeto paciente,
+pero la base de datos correctamente sólo registra el odonotologo_id y paciente_id, entonces ello genera el problema de que para
+guardar un nuevo turno tenemos que conocer y generar todos los datos de odontologo y paciente y además el metodo listar,
+-suponemos- que por no coincidir el tipo de objetos me da un null, en vez del ID de cada uno.
+
+
+
+
+CHATGPT
+
+ If you want to pass only the IDs of `PacienteDto` and `OdontologoDto` instead of the complete objects, you have a few options to achieve that.
+
+One approach is to modify the constructor of `TurnoDto` to accept the ID values for `PacienteDto` and `OdontologoDto` instead of the complete objects. You can then use these IDs to retrieve the corresponding objects within the constructor or when needed. Here's an example:
+
+```java
+public TurnoDto(Long id, Long pacienteDtoId, Long odontologoDtoId, LocalDateTime fechaTurno) {
+    this.id = id;
+    this.pacienteDto = retrievePacienteDtoById(pacienteDtoId); // Retrieve PacienteDto object using the ID
+    this.odontologoDto = retrieveOdontologoDtoById(odontologoDtoId); // Retrieve OdontologoDto object using the ID
+    this.fechaTurno = fechaTurno;
+}
+```
+
+In the above code, `retrievePacienteDtoById` and `retrieveOdontologoDtoById` are methods that you need to implement to fetch the corresponding objects using the provided IDs.
+
+Alternatively, if you're receiving the ID values externally and want to instantiate a `TurnoDto` object based on those IDs, you can use an object mapper, such as Jackson's `ObjectMapper`, to map the IDs to the corresponding objects. Here's an example:
+
+```java
+ObjectMapper objectMapper = new ObjectMapper();
+PacienteDto pacienteDto = objectMapper.convertValue(pacienteDtoId, PacienteDto.class);
+OdontologoDto odontologoDto = objectMapper.convertValue(odontologoDtoId, OdontologoDto.class);
+
+TurnoDto turnoDto = new TurnoDto(id, pacienteDto, odontologoDto, fechaTurno);
+```
+
+In this example, `pacienteDtoId` and `odontologoDtoId` are the ID values of `PacienteDto` and `OdontologoDto`, respectively. The `ObjectMapper` is used to convert the IDs into the corresponding objects.
+
+Remember to import the necessary classes (`ObjectMapper`, `PacienteDto`, `OdontologoDto`, `LocalDateTime`) and handle any exceptions that may arise when working with the object mapper.
+
+Choose the approach that best fits your requirements and implementation constraints.

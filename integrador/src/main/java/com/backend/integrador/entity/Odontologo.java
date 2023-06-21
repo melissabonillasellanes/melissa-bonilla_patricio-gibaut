@@ -1,8 +1,7 @@
 package com.backend.integrador.entity;
 
 import jakarta.persistence.*;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "ODONTOLOGOS")
@@ -12,34 +11,20 @@ public class Odontologo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "VARCHAR(15)")
-    private String numeroMatricula;
-
-    @Column(columnDefinition = "VARCHAR(50)")
     private String nombre;
-
-    @Column(columnDefinition = "VARCHAR(50)")
     private String apellido;
+    private String matricula;
 
-    public Odontologo(){};
+    public Odontologo(){}
 
-    public Odontologo(String numeroMatricula, String nombre, String apellido) {
-        this.numeroMatricula = numeroMatricula;
+    public Odontologo(String nombre, String apellido, String matricula) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.matricula = matricula;
     }
 
     public Long getId() {
         return id;
-    }
-
-
-    public String getNumeroMatricula() {
-        return numeroMatricula;
-    }
-
-    public void setNumeroMatricula(String numeroMatricula) {
-        this.numeroMatricula = numeroMatricula;
     }
 
     public String getNombre() {
@@ -56,5 +41,13 @@ public class Odontologo {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 }

@@ -1,11 +1,7 @@
 package com.backend.integrador.service.impl;
 
-import com.backend.integrador.dto.DomicilioDto;
-import com.backend.integrador.dto.OdontologoDto;
-import com.backend.integrador.dto.PacienteDto;
 import com.backend.integrador.dto.TurnoDto;
 import com.backend.integrador.entity.Odontologo;
-import com.backend.integrador.entity.Paciente;
 import com.backend.integrador.entity.Turno;
 import com.backend.integrador.repository.TurnoRepository;
 import com.backend.integrador.service.ITurnoService;
@@ -19,9 +15,12 @@ import java.util.List;
 
 @Service
 public class TurnoService implements ITurnoService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TurnoService.class);
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PacienteService.class);
+
     private final TurnoRepository turnoRepository;
-    private ObjectMapper objectMapper;
+
+    private final ObjectMapper objectMapper;
 
     @Autowired
     public TurnoService(TurnoRepository turnoRepository, ObjectMapper objectMapper) {
@@ -29,76 +28,39 @@ public class TurnoService implements ITurnoService {
         this.objectMapper = objectMapper;
     }
 
-    @Override
-    public TurnoDto guardarTurno(Turno turno) {
-        Turno turnoNuevo = turnoRepository.save(turno);
-        TurnoDto turnoDto = new TurnoDto();
-
-        //TurnoDto turnoDto = objectMapper.convertValue(turnoNuevo, TurnoDto.class );
-
-        PacienteDto pacienteDtoNuevo = objectMapper.convertValue(turnoNuevo.getPaciente(), PacienteDto.class);
-        OdontologoDto odontologoDtoNuevo = objectMapper.convertValue(turnoNuevo.getOdontologo(), OdontologoDto.class);
-        turnoDto.setOdontologo(odontologoDtoNuevo);
-        turnoDto.setPaciente(pacienteDtoNuevo);
-        turnoDto.setFecha(turnoNuevo.getFechaTurno());
-
-        return  turnoDto;
-    }
 
     @Override
-    public List<TurnoDto> listarTodos() {
-
-        List<Turno> turnos = turnoRepository.findAll();
-        List<TurnoDto> turnoDtos = turnos.stream()
-                .map(turno -> {
-                    Odontologo odontologo = turno.getOdontologo();
-                    OdontologoDto odontologoDto = objectMapper.convertValue(odontologo, OdontologoDto.class);
-                    Paciente paciente = turno.getPaciente();
-                    PacienteDto pacienteDto = objectMapper.convertValue(paciente, PacienteDto.class);
-
-                    return new TurnoDto(pacienteDto, odontologoDto, turno.getFechaTurno());
-        })
-                .toList();
-        LOGGER.info("Lista de todos los turnos: {}", turnoDtos);
-
-        return turnoDtos;
-
-    }
-
-    @Override
-    public TurnoDto buscarTurnoPorId(Long id) {
-        Turno turnoBuscado = turnoRepository.findById(id).orElse(null);
-        TurnoDto turnoDto = null;
-
-        if (turnoBuscado != null) {
-            turnoDto = objectMapper.convertValue(turnoBuscado, TurnoDto.class);
-            LOGGER.info("Turno encontrado: {}", turnoDto);
-
-        } else LOGGER.info("El id no se encuentra en la base de datos");
-
+    public TurnoDto nuevoTurno(Turno turno) {
+        Turno turnoNvo = turnoRepository.save(turno);
+        TurnoDto turnoDto = objectMapper.convertValue(turnoNvo, TurnoDto.class);
+        LOGGER.info("Turno agendado! {}", turnoDto);
         return turnoDto;
     }
 
     @Override
-    public TurnoDto actualizarTurno(Turno turno) {
-        Turno turnoAActualizar = turnoRepository.findById(turno.getId()).orElse(null);
-        TurnoDto turnoActualizadoDto = null;
+    public List<TurnoDto> listarTurnos() {
+        List<Turno> turnos = turnoRepository.findAll();
+        List<TurnoDto> turnoDtos = turnos.stream()
+                .map(turno -> {
+                    TurnoDto turnoDto = objectMapper.convertValue(turno, TurnoDto.class);
+                    //return new TurnoDto(turnoDto.getId(),turnoDto.getPacienteDto().getDni(), turnoDto.getOdontologoDto().getMatricula(), turnoDto.getFechaTurno());
+                    // la opción anterior nos permitiría ?? traer los datos que pueda devolver el listado (DNI para el paciente y MATRICULA para el Odontólogo), pero el constructor no coincide.
+                    // El constructor de TurnoDto espera un objeto PacienteDto (no un String) y un OdontologoDto (y no otro String).
+                    return new TurnoDto(turnoDto.getId(),turnoDto.getPacienteDto(), turnoDto.getOdontologoDto(), turnoDto.getFechaTurno());
+                })
+                .toList();
 
-        if (turnoAActualizar != null){
-            turnoAActualizar = turno;
-            turnoRepository.save(turnoAActualizar);
-
-            turnoActualizadoDto = objectMapper.convertValue(turnoAActualizar, TurnoDto.class);
-            LOGGER.info("Turno actualizado con éxito: {}", turnoActualizadoDto);
-        }
-
-        return turnoActualizadoDto;
+        LOGGER.info("Listado de Turnos {}",turnoDtos);
+        return turnoDtos;
     }
 
     @Override
-    public void eliminarTurno(Long id) {
-      turnoRepository.deleteById(id);
-      LOGGER.info("Turno eliminado con id: {}", id);
+    public TurnoDto buscarTurnoPorId(Long id) {
+        return null;
+    }
 
+    @Override
+    public TurnoDto eliminarTurno(Long id) {
+        return null;
     }
 }

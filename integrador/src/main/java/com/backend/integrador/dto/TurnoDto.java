@@ -1,6 +1,5 @@
 package com.backend.integrador.dto;
 
-import com.backend.integrador.entity.Turno;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
@@ -8,42 +7,54 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoDto {
 
+    private Long id;
     private PacienteDto pacienteDto;
     private OdontologoDto odontologoDto;
-    private LocalDateTime fecha;
+    private LocalDateTime fechaTurno;
+    private String dni;
+    private String matricula;
 
-    public TurnoDto() {
+    public TurnoDto(){}
+
+
+    public TurnoDto(Long id, PacienteDto pacienteDto, OdontologoDto odontologoDto, LocalDateTime fechaTurno) {
+        this.id = id;
+        this.pacienteDto = pacienteDto;
+        this.odontologoDto = odontologoDto;
+        this.fechaTurno = fechaTurno;
     }
 
-    public TurnoDto(PacienteDto paciente, OdontologoDto odontologo, LocalDateTime fecha) {
-        this.pacienteDto = paciente;
-        this.odontologoDto = odontologo;
-        this.fecha = fecha;
+    public TurnoDto(PacienteDto pacienteDto, OdontologoDto odontologoDto, LocalDateTime fechaTurno) {
+        this.pacienteDto = pacienteDto;
+        this.odontologoDto = odontologoDto;
+        this.fechaTurno = fechaTurno;
     }
 
-    public PacienteDto getPaciente() {
+    public Long getId() {
+        return id;
+    }
+
+    public PacienteDto getPacienteDto() {
         return pacienteDto;
     }
 
-    public void setPaciente(PacienteDto paciente) {
-        this.pacienteDto = paciente;
+    public void setPacienteDto(PacienteDto pacienteDto) {
+        this.pacienteDto = pacienteDto;
     }
 
-    public OdontologoDto getOdontologo() {
+    public OdontologoDto getOdontologoDto() {
         return odontologoDto;
     }
 
-    public void setOdontologo(OdontologoDto odontologo) {
-        this.odontologoDto = odontologo;
+    public void setOdontologoDto(OdontologoDto odontologoDto) {
+        this.odontologoDto = odontologoDto;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
+    public LocalDateTime getFechaTurno() {
+        return fechaTurno;
     }
 
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
+    public void setFechaTurno(LocalDateTime fechaTurno) {
+        this.fechaTurno = fechaTurno;
     }
-
-
 }

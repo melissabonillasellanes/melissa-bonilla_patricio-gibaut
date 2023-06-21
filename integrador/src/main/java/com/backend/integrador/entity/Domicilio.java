@@ -2,47 +2,31 @@ package com.backend.integrador.entity;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "DOMICILIOS")
 public class Domicilio {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String calle;
-
-    private int numero;
-
+    private Integer numero;
     private String ciudad;
 
-    private String departamento;
 
-    private String pais;
+    public Domicilio() {}
 
-    private String codigoPostal;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "paciente_id")
-    private Paciente paciente;
-
-    public Domicilio(){};
-
-    public Domicilio(String calle, int numero, String ciudad, String departamento, String pais, String codigoPostal, Paciente paciente) {
+    public Domicilio(String calle, Integer numero, String ciudad) {
         this.calle = calle;
         this.numero = numero;
         this.ciudad = ciudad;
-        this.departamento = departamento;
-        this.pais = pais;
-        this.codigoPostal = codigoPostal;
-        this.paciente = paciente;
     }
 
     public Long getId() {
         return id;
     }
-
-
     public String getCalle() {
         return calle;
     }
@@ -51,11 +35,11 @@ public class Domicilio {
         this.calle = calle;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
@@ -65,37 +49,5 @@ public class Domicilio {
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getCodigoPostal() {
-        return codigoPostal;
-    }
-
-    public void setCodigoPostal(String codigoPostal) {
-        this.codigoPostal = codigoPostal;
-    }
-
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
     }
 }
