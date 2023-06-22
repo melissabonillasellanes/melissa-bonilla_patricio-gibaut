@@ -2,6 +2,8 @@ package com.backend.integrador.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,16 +16,20 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "paciente_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "paciente_id", nullable = false)
+    @NotNull(message = "El paciente no puede ser nulo")
     private Paciente paciente;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "odontologo_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "odontologo_id", nullable = false)
+    @NotNull(message = "El odontologo no puede ser nulo")
     private Odontologo odontologo;
 
     // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm") //tuve que modificar el formato para que funcione.
+    @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
+    @NotNull(message = "Debe especificarse la fecha y hora del turno")
     private LocalDateTime fechaTurno;
 
     public Turno(){}

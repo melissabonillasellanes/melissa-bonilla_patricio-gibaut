@@ -1,6 +1,7 @@
 package com.backend.integrador.dto;
 
 import com.backend.integrador.entity.Domicilio;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDate;
@@ -12,6 +13,8 @@ public class PacienteDto {
     private String nombre;
     private String apellido;
     private String dni;
+
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate fechaAlta;
     private DomicilioDto domicilioDto;
 

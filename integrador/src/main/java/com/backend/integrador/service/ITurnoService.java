@@ -7,11 +7,13 @@ import java.util.List;
 
 public interface ITurnoService {
 
-    TurnoDto nuevoTurno(Turno turno);
+    TurnoDto nuevoTurno(TurnoDto turno);
 
     List<TurnoDto> listarTurnos();
 
     TurnoDto buscarTurnoPorId(Long id);
 
-    TurnoDto eliminarTurno(Long id);
+    TurnoDto actualizarTurno(Turno turno);
+
+    void eliminarTurno(Long id);
 }

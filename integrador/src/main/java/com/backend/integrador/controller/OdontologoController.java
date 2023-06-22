@@ -26,15 +26,53 @@ public class OdontologoController {
     }
 
     @PostMapping("/agregar")
+    public ResponseEntity<OdontologoDto> agregarOdontologo(@RequestBody Odontologo odontologo){
+        OdontologoDto odontologoDS = odontologoService.agregarOdontologo(odontologo);
+        return new ResponseEntity<>(odontologoDS, null, HttpStatus.CREATED);
+    }
+
+    /*  PREGUNTAR POR QUÉ FUNCIONA IGUAL CON EL ?
+        @PostMapping("/agregar")
     public ResponseEntity<?> agregarOdontologo(@RequestBody Odontologo odontologo){
         OdontologoDto odontologoDS = odontologoService.agregarOdontologo(odontologo);
         return new ResponseEntity<>(odontologoDS, null, HttpStatus.CREATED);
     }
+     */
+
 
     @GetMapping
     private List<OdontologoDto> listarOdontologos(){ return odontologoService.listarTodos();}
 
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarOdontologoPorId(@PathVariable Long id) {
+
+        return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id), null, HttpStatus.OK);
+    }
+
+
+    @PutMapping("/actualizar")
+    public ResponseEntity<OdontologoDto> actualizarOdontologo(@RequestBody Odontologo odontologo) {
+        return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo), null, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id){
+        odontologoService.eliminarOdontologo(id);
+        return ResponseEntity.ok("Odontologo eliminado");
+    }
+
+    /*
+        @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
+        odontologoService.eliminarOdontologo(id);
+        return ResponseEntity.ok("Odontologo eliminado");
+    }
+
+     */
+
+
+    // ABM desde odontologo.html
     @GetMapping("/abm")
     @CrossOrigin(origins = "http://localhost:*")
     public ModelAndView welcome() {

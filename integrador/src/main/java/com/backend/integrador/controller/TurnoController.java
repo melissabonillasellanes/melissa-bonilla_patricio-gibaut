@@ -17,6 +17,7 @@ import java.util.List;
 @RequestMapping("/turnos")
 public class TurnoController {
 
+    // private ITurnoService turnoService;  Por qué ??
     private TurnoService turnoService;
 
     @Autowired
@@ -24,14 +25,40 @@ public class TurnoController {
         this.turnoService = turnoService;
     }
 
+    /*
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevoTurno(@RequestBody Turno turno){
         TurnoDto turnoDS = turnoService.nuevoTurno(turno);
+        return new ResponseEntity<>(turnoDS, null, HttpStatus.CREATED);
+    }
+     */
+
+    @PostMapping("/nuevo")
+    public ResponseEntity<?> nuevoTurno(@RequestBody TurnoDto turnoIn){
+        TurnoDto turnoDS = turnoService.nuevoTurno(turnoIn);
         return new ResponseEntity<>(turnoDS, null, HttpStatus.CREATED);
     }
 
     @GetMapping
     private List<TurnoDto> listarTurnos(){ return turnoService.listarTurnos();}
 
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarTurnoPorId(@PathVariable Long id) {
+        return new ResponseEntity<>(turnoService.buscarTurnoPorId(id), null, HttpStatus.OK);
+    }
+
+    @PutMapping("/actualizar")
+    public ResponseEntity<TurnoDto> actualizarPaciente(@RequestBody Turno turno) {
+        return new ResponseEntity<>(turnoService.actualizarTurno(turno), null, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) {
+
+        turnoService.eliminarTurno(id);
+        return ResponseEntity.ok("Turno eliminado");
+
+    }
 
 }

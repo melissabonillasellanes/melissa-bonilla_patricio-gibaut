@@ -5,18 +5,37 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DomicilioDto {
 
+    private Long id;
     private String calle;
     private int numero;
     private String ciudad;
+    private String departamento;
+
 
     public DomicilioDto(){}
 
-    public DomicilioDto(String calle, int numero, String ciudad) {
+    public DomicilioDto(Long id, String calle, int numero, String ciudad, String departamento) {
+        this.id = id;
         this.calle = calle;
         this.numero = numero;
         this.ciudad = ciudad;
+        this.departamento = departamento;
     }
 
+    public DomicilioDto(String calle, int numero, String ciudad, String departamento) {
+        this.calle = calle;
+        this.numero = numero;
+        this.ciudad = ciudad;
+        this.departamento = departamento;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
 
     public String getCalle() {
         return calle;

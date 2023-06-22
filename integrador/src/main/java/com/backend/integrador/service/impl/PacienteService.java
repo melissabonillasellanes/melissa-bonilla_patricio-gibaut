@@ -4,6 +4,8 @@ import com.backend.integrador.dto.DomicilioDto;
 import com.backend.integrador.dto.PacienteDto;
 import com.backend.integrador.entity.Domicilio;
 import com.backend.integrador.entity.Paciente;
+import com.backend.integrador.exception.ResourceNotFoundException;
+import com.backend.integrador.utils.JsonPrinter;
 import com.backend.integrador.repository.PacienteRepository;
 import com.backend.integrador.service.IPacienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,7 +38,7 @@ public class PacienteService implements IPacienteService {
         Paciente pacienteNvo = pacienteRepository.save(paciente);
         PacienteDto pacienteDto = objectMapper.convertValue(pacienteNvo, PacienteDto.class);
 
-        LOGGER.info("Paciente {} agregado.", pacienteDto);
+        LOGGER.info("PS-Paciente {} agregado.", pacienteDto);
         return pacienteDto;
     }
 
@@ -52,17 +54,35 @@ public class PacienteService implements IPacienteService {
                 })
                 .toList();
 
-        LOGGER.info("Listado de pacientes {} ", pacienteDtos);
+        LOGGER.info("PS-Listado de pacientes {} ", pacienteDtos);
         return pacienteDtos;
     }
 
     @Override
     public PacienteDto buscarPorId(Long id) {
+
+        Paciente pacienteBuscado = pacienteRepository.findById(id).orElse(null);
+        PacienteDto pacienteDto = null;
+        if (pacienteBuscado != null) {
+            DomicilioDto domicilioDto = objectMapper.convertValue(pacienteBuscado.getDomicilio(), DomicilioDto.class);
+            pacienteDto = objectMapper.convertValue(pacienteBuscado, PacienteDto.class);
+            pacienteDto.setDomicilioDto(domicilioDto);
+
+            LOGGER.info("PS-Paciente encontrado: {}", JsonPrinter.toString(pacienteDto));
+
+        } else LOGGER.info("PS-El id de Paciente no se encuentra registrado en la base de datos");
+
+        return pacienteDto;
+
+    }
+
+    @Override
+    public PacienteDto actualizarPaciente(Paciente paciente) {
         return null;
     }
 
     @Override
-    public PacienteDto eliminarPaciente(Long id) {
-        return null;
-    }
+    public void eliminarPaciente(Long id) {    }
+
+
 }
