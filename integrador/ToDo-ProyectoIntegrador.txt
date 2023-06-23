@@ -22,6 +22,8 @@ pero la base de datos correctamente sólo registra el odonotologo_id y paciente_
 guardar un nuevo turno tenemos que conocer y generar todos los datos de odontologo y paciente y además el metodo listar,
 -suponemos- que por no coincidir el tipo de objetos me da un null, en vez del ID de cada uno.
 
+>> Agregar los @Valid en los mappings de los controllers que modifican la capa de persistencia (agregar, actualizar).
+
 
 
 
@@ -57,3 +59,5 @@ In this example, `pacienteDtoId` and `odontologoDtoId` are the ID values of `Pac
 Remember to import the necessary classes (`ObjectMapper`, `PacienteDto`, `OdontologoDto`, `LocalDateTime`) and handle any exceptions that may arise when working with the object mapper.
 
 Choose the approach that best fits your requirements and implementation constraints.
+
+
