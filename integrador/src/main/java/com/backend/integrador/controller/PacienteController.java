@@ -2,6 +2,8 @@ package com.backend.integrador.controller;
 
 import com.backend.integrador.dto.PacienteDto;
 import com.backend.integrador.entity.Paciente;
+import com.backend.integrador.exception.BadRequestException;
+import com.backend.integrador.exception.ResourceNotFoundException;
 import com.backend.integrador.service.impl.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,7 @@ public class PacienteController {
     }
 
     @PostMapping("/agregar")
-    public ResponseEntity<PacienteDto> agregarPaciente(@RequestBody Paciente paciente){
+    public ResponseEntity<PacienteDto> agregarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
         ResponseEntity<PacienteDto> respuesta;
         PacienteDto pacienteDS = pacienteService.agregarPaciente(paciente);
         if (pacienteDS != null) respuesta = new ResponseEntity<>(pacienteDS, null, HttpStatus.CREATED);
@@ -32,12 +34,12 @@ public class PacienteController {
     }
 
     @GetMapping()
-    private List<PacienteDto> listarPacientes(){
+    private List<PacienteDto> listarPacientes() {
         return pacienteService.listarTodos();
     }
 
     @PutMapping("/actualizar")
-    public ResponseEntity<PacienteDto> actualizarPaciente(@RequestBody Paciente paciente) {
+    public ResponseEntity<PacienteDto> actualizarPaciente(@RequestBody Paciente paciente) throws ResourceNotFoundException {
         ResponseEntity<PacienteDto> respuesta;
         PacienteDto pacienteDto = pacienteService.actualizarPaciente(paciente);
         if (pacienteDto != null) respuesta = new ResponseEntity<>(pacienteDto, null, HttpStatus.OK);
@@ -46,7 +48,7 @@ public class PacienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PacienteDto> buscarPacientePorId(@PathVariable Long id) {
+    public ResponseEntity<PacienteDto> buscarPacientePorId(@PathVariable Long id) throws ResourceNotFoundException {
         ResponseEntity<PacienteDto> respuesta;
         PacienteDto pacienteDto = pacienteService.buscarPorId(id);
         if (pacienteDto != null) respuesta = new ResponseEntity<>(pacienteDto, null, HttpStatus.OK);
@@ -55,7 +57,7 @@ public class PacienteController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarPaciente(@PathVariable Long id){
+    public void eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(id);
     }
 

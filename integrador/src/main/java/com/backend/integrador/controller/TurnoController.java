@@ -4,6 +4,8 @@ import com.backend.integrador.dto.PacienteDto;
 import com.backend.integrador.dto.TurnoDto;
 import com.backend.integrador.entity.Paciente;
 import com.backend.integrador.entity.Turno;
+import com.backend.integrador.exception.BadRequestException;
+import com.backend.integrador.exception.ResourceNotFoundException;
 import com.backend.integrador.service.impl.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +36,7 @@ public class TurnoController {
      */
 
     @PostMapping("/nuevo")
-    public ResponseEntity<?> nuevoTurno(@RequestBody TurnoDto turnoIn){
+    public ResponseEntity<?> nuevoTurno(@RequestBody TurnoDto turnoIn) throws BadRequestException, ResourceNotFoundException {
         TurnoDto turnoDS = turnoService.nuevoTurno(turnoIn);
         return new ResponseEntity<>(turnoDS, null, HttpStatus.CREATED);
     }
@@ -44,17 +46,17 @@ public class TurnoController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscarTurnoPorId(@PathVariable Long id) {
+    public ResponseEntity<?> buscarTurnoPorId(@PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(turnoService.buscarTurnoPorId(id), null, HttpStatus.OK);
     }
 
     @PutMapping("/actualizar")
-    public ResponseEntity<TurnoDto> actualizarPaciente(@RequestBody Turno turno) {
+    public ResponseEntity<TurnoDto> actualizarPaciente(@RequestBody Turno turno) throws ResourceNotFoundException {
         return new ResponseEntity<>(turnoService.actualizarTurno(turno), null, HttpStatus.OK);
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) {
+    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException {
 
         turnoService.eliminarTurno(id);
         return ResponseEntity.ok("Turno eliminado");
