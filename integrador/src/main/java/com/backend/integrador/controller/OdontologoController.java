@@ -64,16 +64,6 @@ public class OdontologoController {
         return ResponseEntity.ok("Odontologo eliminado");
     }
 
-    /*
-        @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
-        odontologoService.eliminarOdontologo(id);
-        return ResponseEntity.ok("Odontologo eliminado");
-    }
-
-     */
-
-
     // ABM desde odontologo.html
     @GetMapping("/abm")
     @CrossOrigin(origins = "http://localhost:*")

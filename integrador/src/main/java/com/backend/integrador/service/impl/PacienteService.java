@@ -36,9 +36,12 @@ public class PacienteService implements IPacienteService {
     public PacienteDto agregarPaciente(Paciente paciente) throws BadRequestException {
         Paciente pacienteNvo = null;
         PacienteDto pacienteDto = null;
-        if (paciente != null) {
-        pacienteNvo = pacienteRepository.save(paciente);
-        pacienteDto = objectMapper.convertValue(pacienteNvo, PacienteDto.class);
+        DomicilioDto domicilioDto = null;
+        if (paciente != null && paciente.getDomicilio() != null) {
+            domicilioDto = objectMapper.convertValue(paciente.getDomicilio(), DomicilioDto.class);
+            pacienteNvo = pacienteRepository.save(paciente);
+            pacienteDto = objectMapper.convertValue(pacienteNvo, PacienteDto.class);
+            pacienteDto.setDomicilioDto(domicilioDto);
         } else {
             LOGGER.error("No se pudo agregar el paciente");
             throw new BadRequestException("No se pudo agregar el paciente");
