@@ -9,6 +9,10 @@ PENDIENTES:
 >> Ver cómo se devuelve una página de respuesta con los datos del entity creado.
 >> Agregar los @Valid en los mappings de los controllers que modifican la capa de persistencia (agregar, actualizar).
 
+Chequear los 
+@DeleteMapping (que tenga un EntityResponse 204 no content cuando se elimina para diferenciar del 404 cuando no encuentra el Id que se intenta eliminar).
+@PutMapping
+
 
 RESUELTO:
 Se cambió el formato Json de LocalDateTime y anduvo
