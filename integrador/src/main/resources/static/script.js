@@ -1,18 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var odontologoForm = document.getElementById('odontologoForm');
+    let agregarPaciente = document.getElementById('agregarP');
     
-    odontologoForm.addEventListener('submit', function(event) {
+    agregarPaciente.addEventListener('submit', function(event) {
       event.preventDefault();
   
-      var odontologoData = {
+      let pacienteData = {
         nombre: document.getElementById('nombre').value,
         apellido: document.getElementById('apellido').value,
-        matricula: document.getElementById('matricula').value
+        dni: document.getElementById('dni').value,
+        fechaAlta: document.getElementById('fechaAlta').value,
+        calle: document.getElementById('calle').value,
+        numero: document.getElementById('numero').value,
+        ciudad: document.getElementById('ciudad').value,
       };
   
-      var jsonData = JSON.stringify(odontologoData);
+      let jsonData = JSON.stringify(pacienteData);
   
-      fetch('http://localhost:8080/odontologos/agregar', {
+      fetch('http://localhost:8080/pacientes/agregar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -23,17 +27,17 @@ document.addEventListener('DOMContentLoaded', function() {
           if (response.ok) {
             return response.json();
           } else {
-            throw new Error('Error adding Odontologo');
+            throw new Error('Error agregando paciente');
           }
         })
         .then(function(data) {
           // Handle the response from the server
-          console.log('Odontologo agregado correctamente:', data);
+          console.log('Paciente agregado correctamente:', data);
           // You can perform additional actions here if needed
         })
         .catch(function(error) {
           // Handle any errors that occur during the fetch request
-          console.error('Error agregando Odontologo:', error);
+          console.error('Error agregando Paciente:', error);
         });
     });
   });

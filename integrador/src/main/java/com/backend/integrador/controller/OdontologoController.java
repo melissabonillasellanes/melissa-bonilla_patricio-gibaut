@@ -65,13 +65,13 @@ public class OdontologoController {
     }
 
     // ABM desde odontologo.html
-    @GetMapping("/abm")
-    @CrossOrigin(origins = "http://localhost:*")
-    public ModelAndView welcome() {
-        ModelAndView modelAndView = new ModelAndView("odontologo");
-        modelAndView.addObject("nombre", "Usuario");
-        return modelAndView;
-    }
+    // @GetMapping("/abm")
+    // @CrossOrigin(origins = "http://localhost:*")
+    // public ModelAndView welcome() {
+        // ModelAndView modelAndView = new ModelAndView("odontologo");
+        // modelAndView.addObject("nombre", "Usuario");
+  //      return modelAndView;
+//    }
 
 
 }
