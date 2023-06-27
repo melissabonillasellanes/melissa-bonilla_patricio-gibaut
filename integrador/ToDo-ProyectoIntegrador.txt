@@ -5,8 +5,10 @@ Los turnos se cargan con ID de Paciente y ID de odontólogo, para facilitar la c
 
 
 PENDIENTES:
->> Generar paginas ABM para Paciente (incluyendo el domicilio)
->> Ver cómo se devuelve una página de respuesta con los datos del entity creado.
+
+>> Falta mejorar la presentación en la pagina HTML de los resultados del fetch (listar, agregar). y del manejo de errores.
+
+>> Cuando se busca por ID, debería aparecer un botón "BORRAR" al lado de cada objeto recuperado de la lista.
 >> Agregar los @Valid en los mappings de los controllers que modifican la capa de persistencia (agregar, actualizar).
 
 Chequear los 
@@ -15,6 +17,9 @@ Chequear los
 
 
 RESUELTO:
+
+HECHO // Generar paginas ABM para Paciente (incluyendo el domicilio)
+
 Se cambió el formato Json de LocalDateTime y anduvo
 
 Ahora con Postman se puede agregar un turno... ingresando los datos del paciente, los del odontologo, y fecha y hora del turno.
