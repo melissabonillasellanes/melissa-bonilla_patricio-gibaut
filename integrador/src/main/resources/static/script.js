@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     let agregarPaciente = document.getElementById('agregarP');
-    
+    console.log("")
     agregarPaciente.addEventListener('submit', function(event) {
       event.preventDefault();
   
@@ -9,14 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
         apellido: document.getElementById('apellido').value,
         dni: document.getElementById('dni').value,
         fechaAlta: document.getElementById('fechaAlta').value,
-        calle: document.getElementById('calle').value,
-        numero: document.getElementById('numero').value,
-        ciudad: document.getElementById('ciudad').value,
+        domicilio: {
+                calle: document.getElementById('calle').value,
+                numero: document.getElementById('numero').value,
+                ciudad: document.getElementById('ciudad').value,
+        }
+
       };
-  
+
       let jsonData = JSON.stringify(pacienteData);
+
+      console.log('Datos del Body:', pacienteData);
   
-      fetch('http://localhost:8080/pacientes/agregar', {
+      fetch('/pacientes/agregar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
