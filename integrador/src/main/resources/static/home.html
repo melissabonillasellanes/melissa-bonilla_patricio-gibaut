@@ -2,14 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home Clinica Odontologica</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Home - Clínica Odontológica</title>
+
 </head>
 <body>
 <header>
-  <h1>Clinica Odontologica</h1>
+  <h1>Clínica Odontológica</h1>
 </header>
 <main>
 <div>
+  <table>
+    <tr>
+      <td>
   <div>
     <h2>Pacientes</h2>
       <button id="listarP">Listar todos</button>
@@ -28,7 +33,7 @@
     <br>
     <br>
     <label for="fechaAlta">Fecha de ingreso</label>
-    <input type="text" id="fechaAlta" required>
+    <input type="date" id="fechaAlta" required>
     <br>
     <br>
     <label for="calle">Calle</label>
@@ -49,6 +54,8 @@
       <input type="text" id="idP" name="id" placeholder="Ingrese el id">
       <button id="buscarP">Buscar por id</button>
   </div>
+    </td>
+    <td>
   <div>
     <h2>Odontólogos</h2>
       <button id="listarO">Listar todos</button>
@@ -72,18 +79,36 @@
       <input type="text" id="idO" name="id" placeholder="Ingrese el id">
       <button id="buscarO">Buscar por id</button>
   </div>
+    </td>
+    <td>
   <div>
-    <h2>Turno</h2>
+    <h2>Turnos</h2>
       <button id="listarT">Listar todos</button>
       <br>
       <br>
+    <label for="pacienteId">ID Paciente</label>
+    <input type="text" id="pacienteId" required>
+    <br>
+    <br>
+    <label for="odontologoId">ID Odontólogo</label>
+    <input type="text" id="odontologoId" required>
+    <br>
+    <br>
+    <label for="fechaTurno">Fecha y Hora</label>
+    <input type="datetime-local" id="fechaTurno" placeholder="AAAA-MM-DDTHH:MM" required>
+    <br>
+    <br>
       <button id="agregarT">Agregar</button>
       <br>
       <br>
       <input type="text" id="idT" name="id" placeholder="Ingrese el id">
       <button id="buscarT">Buscar por id</button>
   </div>
+    </td>
+    </tr>
+  </table>
 </div>
+  <div id="contenedorRespuesta"></div>
 </main>
 <script type="text/javascript" src="script.js"></script>
 </body>

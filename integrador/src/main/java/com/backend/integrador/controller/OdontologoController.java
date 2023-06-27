@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/odontologos")
 public class OdontologoController {

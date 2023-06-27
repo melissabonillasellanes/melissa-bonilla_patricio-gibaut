@@ -13,15 +13,18 @@ public class Domicilio {
     private String calle;
     private Integer numero;
     private String ciudad;
+    private String departamento;
 
 
     public Domicilio() {}
 
 
-    public Domicilio(String calle, Integer numero, String ciudad) {
+    public Domicilio(String calle, Integer numero, String ciudad, String departamento) {
         this.calle = calle;
         this.numero = numero;
         this.ciudad = ciudad;
+        this.departamento = departamento;
+
     }
 
     public Long getId() {
@@ -49,5 +52,13 @@ public class Domicilio {
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 }
