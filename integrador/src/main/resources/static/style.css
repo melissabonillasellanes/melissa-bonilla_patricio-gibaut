@@ -9,7 +9,7 @@ body {
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 5px;
 }
 
 h1, h2 {
@@ -21,7 +21,7 @@ button {
   background-color: #337ab7;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -46,23 +46,58 @@ label {
 
 header {
   background-color: #f5f5f5;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
 }
 
 main {
-  padding: 20px;
+  padding: 10px;
 }
 
+table {
+  margin: 0 auto;
+}
 td {
-  padding: 40px;
+  padding: 5px 15px;
   vertical-align: top;
+  border: 1px solid #ccc;
+  border-radius: 15px;
 }
 
+#status {
+  text-align:center;
+}
+
+
+#mainDiv {
+  text-align:center;
+}
 
 #contenedorRespuesta {
   margin-top: 20px;
 }
+
+/* Efectos en HTML para mostrar responses */
+.oculto {
+  visibility: hidden;
+}
+
+.ok {
+  background-color: #BBFFBB;
+  text-color: #00CC00;
+  border: 1px solid;
+  border-radius: 15px;
+
+}
+
+.error {
+  background-color: #FFBBBB;
+  text-color: #CC0000;
+  border: 1px solid;
+  border-radius: 15px;
+
+}
+
 
 /* Estilos para el diseño responsivo */
 

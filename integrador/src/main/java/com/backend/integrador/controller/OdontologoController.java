@@ -60,9 +60,10 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
+    public ResponseEntity<Void> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
-        return ResponseEntity.ok("Odontologo eliminado");
+        //return ResponseEntity.ok("Turno eliminado"); Esta versión devuelve 200 ok, es mas apropiado 204.
+        return ResponseEntity.noContent().build();
     }
 
     // ABM desde odontologo.html

@@ -28,13 +28,6 @@ public class TurnoController {
         this.turnoService = turnoService;
     }
 
-    /*
-    @PostMapping("/nuevo")
-    public ResponseEntity<?> nuevoTurno(@RequestBody Turno turno){
-        TurnoDto turnoDS = turnoService.nuevoTurno(turno);
-        return new ResponseEntity<>(turnoDS, null, HttpStatus.CREATED);
-    }
-     */
 
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevoTurno(@RequestBody TurnoDto turnoIn) throws BadRequestException, ResourceNotFoundException {
