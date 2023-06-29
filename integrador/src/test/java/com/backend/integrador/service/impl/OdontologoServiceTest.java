@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.validation.ConstraintViolationException;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -38,7 +40,12 @@ class OdontologoServiceTest {
     }
 
     @Test
+    @Order(3)
     void listarTodos() {
+        List<OdontologoDto> odontologoDtoList = odontologoService.listarTodos();
+
+        Assertions.assertTrue(odontologoDtoList != null);
+
     }
 
     @Test
