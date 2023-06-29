@@ -1,11 +1,11 @@
 package com.backend.integrador.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 @Entity

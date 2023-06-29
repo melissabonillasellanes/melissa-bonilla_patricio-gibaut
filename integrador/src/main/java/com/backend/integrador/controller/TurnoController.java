@@ -1,8 +1,6 @@
 package com.backend.integrador.controller;
 
-import com.backend.integrador.dto.PacienteDto;
 import com.backend.integrador.dto.TurnoDto;
-import com.backend.integrador.entity.Paciente;
 import com.backend.integrador.entity.Turno;
 import com.backend.integrador.exception.BadRequestException;
 import com.backend.integrador.exception.ResourceNotFoundException;
@@ -10,7 +8,6 @@ import com.backend.integrador.service.impl.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

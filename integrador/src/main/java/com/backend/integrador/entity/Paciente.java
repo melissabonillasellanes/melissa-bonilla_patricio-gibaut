@@ -1,8 +1,8 @@
 package com.backend.integrador.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.Length;
 
 
