@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const listarOButton = document.getElementById('listarO');
     const agregarOButton = document.getElementById('agregarO');
     const buscarOButton = document.getElementById('buscarO');
+    const eliminarOButton = document.getElementById('eliminarO');
 
     const listarTButton = document.getElementById('listarT');
     const agregarTButton = document.getElementById('agregarT');
@@ -64,6 +65,10 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault(); // Evitar comportamiento predeterminado del botón
         buscarOdontologo();
         });
+    eliminarOButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Evitar comportamiento predeterminado del botón
+        eliminarOdontologo();
+        });
 
 
     listarTButton.addEventListener('click', listarTurnos);
@@ -80,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // FUNCIONES GENERALES aplicables a todas las entities.
 
     // Funciones para enviar los datos vía POST utilizando Fetch
-    function enviarDatos(url, datos) {
+    function enviarDatos(metodo, url, datos) {
 
         //let bodyData = JSON.stringify(datos);
 
@@ -90,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Datos a enviar: ", bodyData);
 
         fetch(url, {
-            method: 'POST',
+            method: metodo,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -167,6 +172,34 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
+
+    function eliminar(url, id) {
+      fetch(url + id, {
+        method: 'DELETE'
+      })
+        .then(response => {
+          if (response.status === 204) {
+            console.log('Datos eliminados correctamente');
+            status.innerText = "Elemento ELIMINADO!";
+            status.classList.add('error');
+            status.classList.remove('oculto');
+            setTimeout(function () {
+              console.log("Delay de 4 segundos.");
+              status.classList.add('oculto');
+            }, 2000);
+          } else {
+            console.log("ERROR else " + response.status);
+            alert("ERROR " + response.status);
+          }
+        })
+        .catch(error => {
+          console.error('Error catch:', error);
+          contenedorRespuesta.innerHTML = "<div>ERROR FETCH (catch)</div>";
+        });
+    }
+
+
+
     // Función para generar contenido HTML dinámicamente a partir de los datos
     function generarHTML(data) {
         let html = '';
@@ -224,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Enviar solicitud POST al handler de agregar paciente
-        enviarDatos('http://localhost:8080/pacientes/agregar', paciente);
+        enviarDatos('POST','http://localhost:8080/pacientes/agregar', paciente);
 
         formPacientes.reset();
     }
@@ -247,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
             matricula: matriculaInput.value
         }
 
-        enviarDatos('http://localhost:8080/odontologos/agregar', odontologo);
+        enviarDatos('POST','http://localhost:8080/odontologos/agregar', odontologo);
 
         formOdontologos.reset();
 
@@ -263,6 +296,12 @@ document.addEventListener('DOMContentLoaded', function () {
         listar("http://localhost:8080/odontologos/", id);
     }
 
+    function eliminarOdontologo() {
+
+        let idE = prompt("Ingrese el Id del odontólogo a eliminar:")
+        eliminar("http://localhost:8080/odontologos/eliminar/", idE);
+    }
+
     function agregarTurno() {
 
         let turno = {
@@ -271,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
             fechaTurno: fechaTurnoInput.value
         }
 
-        enviarDatos('http://localhost:8080/turnos/nuevo', turno);
+        enviarDatos('POST','http://localhost:8080/turnos/nuevo', turno);
 
         formTurnos.reset();
 
