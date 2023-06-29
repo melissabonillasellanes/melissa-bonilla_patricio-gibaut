@@ -6,9 +6,6 @@ Los turnos se cargan con ID de Paciente y ID de odontólogo, para facilitar la c
 
 PENDIENTES:
 
->> Falta mejorar la presentación en la pagina HTML de los resultados del fetch (listar, agregar). y del manejo de errores.
-
->> Cuando se busca por ID, debería aparecer un botón "BORRAR" al lado de cada objeto recuperado de la lista.
 >> Agregar los @Valid en los mappings de los controllers que modifican la capa de persistencia (agregar, actualizar).
 
 Chequear los 
@@ -43,5 +40,6 @@ guardar un nuevo turno tenemos que conocer y generar todos los datos de odontolo
 -suponemos- que por no coincidir el tipo de objetos me da un null, en vez del ID de cada uno.
 Se corrigió TurnoDto y en vez de usar un objeto del tipo Odontologo o Paciente se usan Strings.
 
-FIXEX // Y para Turnos.  En el caso de turnos, en lugar de generar un nuevo paciente y odontólogo, debería verificar si existen, pasando el ID (primero) o bien DNI y Matricula según sea el caso, y solo generar el turno si ambos existen previamente.
+FIXED // Y para Turnos.  En el caso de turnos, en lugar de generar un nuevo paciente y odontólogo, debería verificar si existen, pasando el ID (primero) o bien DNI y Matricula según sea el caso, y solo generar el turno si ambos existen previamente.
 
+SUSPENDIDO >> Cuando se busca por ID, debería aparecer un botón "BORRAR" al lado de cada objeto recuperado de la lista.
