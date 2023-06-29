@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const calleInput = document.getElementById('calle');
     const numeroInput = document.getElementById('numero');
     const ciudadInput = document.getElementById('ciudad');
+    const departamentoInput = document.getElementById('departamento');
 
     const nombreOInput = document.getElementById('nombreO');
     const apellidoOInput = document.getElementById('apellidoO');
@@ -104,14 +105,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     status.innerText = "Datos agregados con éxito!"
                     status.classList.add('ok');
                     status.classList.remove('oculto');
-
                     // ver DELAY
                     setTimeout(function () {
-                        console.log("Delay de 4 segundos.");
-                        status.classList.add('oculto');
+                    console.log("Delay de 4 segundos.");
+                    status.classList.add('oculto');
                     }, 2000);
-
-                    resetFormularios();
 
                     return response.json(); // Convertir la respuesta a JSON
 
@@ -129,6 +127,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 }
             })
+            .then(dataResponse => {
+                let html = "<h3> Datos agregados: </h3><br>"
+                html += generarHTML(dataResponse);
+                contenedorRespuesta.innerHTML = html;
+
+            })
             .catch(error => {
                 console.error('Error catch :', error);
                 contenedorRespuesta.innerHTML = "<div>ERROR FETCH (catch)</div>";
@@ -144,9 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('Datos recibidos correctamente');
                     return response.json(); // Convertir la respuesta a JSON
                 } else {
-                    //throw new Error('Error al realizar la solicitud');
                     console.log("ERROR else" + response.status);
-                    contenedorRespuesta.innerHTML = "<div>ERROR else</div>";
                     alert("ERROR " + response.status);
                 }
             })
@@ -155,8 +157,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 const html = generarHTML(data);
                 // Agregar el contenido HTML al elemento deseado en el DOM
                 console.log("Se debe actualizar HTML con el resultado")
-                console.log(data);
                 contenedorRespuesta.innerHTML = html;
+
             })
             .catch(error => {
                 console.error('Error catch :', error);
@@ -216,12 +218,15 @@ document.addEventListener('DOMContentLoaded', function () {
             domicilio: {
                 calle: calleInput.value,
                 numero: numeroInput.value,
-                ciudad: ciudadInput.value
+                ciudad: ciudadInput.value,
+                departamento: departamentoInput.value
             }
         }
 
         // Enviar solicitud POST al handler de agregar paciente
         enviarDatos('http://localhost:8080/pacientes/agregar', paciente);
+
+        formPacientes.reset();
     }
 
     function listarPacientes() {
@@ -243,6 +248,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         enviarDatos('http://localhost:8080/odontologos/agregar', odontologo);
+
+        formOdontologos.reset();
+
     }
 
     function listarOdontologos() {
@@ -265,6 +273,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         enviarDatos('http://localhost:8080/turnos/nuevo', turno);
 
+        formTurnos.reset();
+
     }
 
     function listarTurnos() {
@@ -275,13 +285,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let id = idT.value;
         listar("http://localhost:8080/turnos/", id);
-    }
-
-    function resetFormularios (){
-         // Resetear el formulario
-         document.getElementById('formPacientes').reset();
-         document.getElementById('formOdontologos').reset();
-         document.getElementById('formTurnos').reset();
     }
 
 
