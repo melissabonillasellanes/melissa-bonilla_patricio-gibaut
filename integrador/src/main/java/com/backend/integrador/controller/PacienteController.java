@@ -57,8 +57,9 @@ public class PacienteController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
+    public ResponseEntity<?> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(id);
+        return ResponseEntity.noContent().build();
     }
 
     /*

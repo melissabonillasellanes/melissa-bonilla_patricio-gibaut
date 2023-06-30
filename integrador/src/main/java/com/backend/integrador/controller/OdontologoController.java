@@ -34,14 +34,6 @@ public class OdontologoController {
         return new ResponseEntity<>(odontologoDS, null, HttpStatus.CREATED);
     }
 
-    /*  PREGUNTAR POR QUÉ FUNCIONA IGUAL CON EL ?
-        @PostMapping("/agregar")
-    public ResponseEntity<?> agregarOdontologo(@RequestBody Odontologo odontologo){
-        OdontologoDto odontologoDS = odontologoService.agregarOdontologo(odontologo);
-        return new ResponseEntity<>(odontologoDS, null, HttpStatus.CREATED);
-    }
-     */
-
 
     @GetMapping
     private List<OdontologoDto> listarOdontologos() throws BadRequestException { return odontologoService.listarTodos();}

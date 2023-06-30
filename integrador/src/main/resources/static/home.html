@@ -14,7 +14,7 @@
 </header>
 <main>
   <div id="mainDiv">
-    <p id="status" class="oculto">STATUS</p>
+    <p id="status" class="oculto ok">STATUS</p>
     <table>
       <tr>
         <td>
@@ -39,10 +39,12 @@
               <label for="departamento">Departamento</label>
               <input type="text" id="departamento" required>
               <button id="agregarP">Agregar</button>
-              <br/>
-              <input type="text" id="idP" name="id" placeholder="Ingrese el id">
+              <input type="text" id="idP" placeholder="Id a actualizar">
+              <button id="actualizarP">Actualizar</button>
+              <br/></form>
               <button id="buscarP">Buscar por id</button>
-            </form>
+              <button id="eliminarP">Eliminar por id</button>
+
           </div>
         </td>
         <td>
@@ -57,8 +59,9 @@
               <label for="matricula">Matricula</label>
               <input type="text" id="matricula" required>
               <button id="agregarO">Agregar</button>
+              <input type="text" id="idO" placeholder="Id a actualizar">
+              <button id="actualizarO">Actualizar</button>
               <br/></form>
-              <input type="text" id="idO" name="id" placeholder="Ingrese el id">
               <button id="buscarO">Buscar por id</button>
               <button id="eliminarO">Eliminar por id</button>
           </div>
@@ -75,10 +78,11 @@
               <label for="fechaTurno">Fecha y Hora</label>
               <input type="datetime-local" id="fechaTurno" placeholder="AAAA-MM-DDTHH:MM" required>
               <button id="agregarT">Agregar</button>
-              <br/>
-              <input type="text" id="idT" name="id" placeholder="Ingrese el id">
+              <input type="text" id="idT" placeholder="Id a actualizar">
+              <button id="actualizarT">Actualizar</button>
+              <br/></form>
               <button id="buscarT">Buscar por id</button>
-            </form>
+              <button id="eliminarT">Eliminar por id</button>
           </div>
         </td>
       </tr>

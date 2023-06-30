@@ -27,15 +27,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const listarPButton = document.getElementById('listarP');
     const agregarPButton = document.getElementById('agregarP');
     const buscarPButton = document.getElementById('buscarP');
+    const eliminarPButton = document.getElementById('eliminarP');
+    const actualizarPButton = document.getElementById('actualizarP');
 
     const listarOButton = document.getElementById('listarO');
     const agregarOButton = document.getElementById('agregarO');
     const buscarOButton = document.getElementById('buscarO');
     const eliminarOButton = document.getElementById('eliminarO');
+    const actualizarOButton = document.getElementById('actualizarO');
 
     const listarTButton = document.getElementById('listarT');
     const agregarTButton = document.getElementById('agregarT');
     const buscarTButton = document.getElementById('buscarT');
+    const eliminarTButton = document.getElementById('eliminarT');
+    const actualizarTButton = document.getElementById('actualizarT');
 
     const contenedorRespuesta = document.getElementById('contenedorRespuesta');
     const status = document.getElementById('status');
@@ -54,6 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault(); // Evitar comportamiento predeterminado del botón
         buscarPaciente();
     });
+    eliminarPButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Evitar comportamiento predeterminado del botón
+        eliminarPaciente();
+        });
+    actualizarPButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Evitar comportamiento predeterminado del botón
+        actualizarPaciente();
+        });
 
 
     listarOButton.addEventListener('click', listarOdontologos);
@@ -69,6 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault(); // Evitar comportamiento predeterminado del botón
         eliminarOdontologo();
         });
+    actualizarOButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Evitar comportamiento predeterminado del botón
+        actualizarOdontologo();
+        });
 
 
     listarTButton.addEventListener('click', listarTurnos);
@@ -80,7 +97,14 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault(); // Evitar comportamiento predeterminado del botón
         buscarTurno();
         });
-
+    eliminarTButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Evitar comportamiento predeterminado del botón
+        eliminarTurno();
+        });
+    actualizarTButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Evitar comportamiento predeterminado del botón
+        actualizarTurno();
+        });
 
     // FUNCIONES GENERALES aplicables a todas las entities.
 
@@ -108,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Agregar algo para modificar el HTML con una respuesta, activando un div o similar.
                     status.innerText = "Datos agregados con éxito!"
-                    status.classList.add('ok');
                     status.classList.remove('oculto');
                     // ver DELAY
                     setTimeout(function () {
@@ -120,11 +143,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 } else {
                     status.innerText = "ERROR al procesar los datos!"
+                    status.classList.remove('ok');
                     status.classList.add('error');
                     status.classList.remove('oculto');
                     // ver DELAY
                     setTimeout(function () {
                         console.log("Delay ERROR de 4 segundos.");
+                        status.classList.remove('error');
+                        status.classList.add('ok');
                         status.classList.add('oculto');
                     }, 2000);
 
@@ -181,12 +207,17 @@ document.addEventListener('DOMContentLoaded', function () {
           if (response.status === 204) {
             console.log('Datos eliminados correctamente');
             status.innerText = "Elemento ELIMINADO!";
+            status.classList.remove('ok');
             status.classList.add('error');
             status.classList.remove('oculto');
+
             setTimeout(function () {
               console.log("Delay de 4 segundos.");
+              status.classList.remove('error');
+              status.classList.add('ok');
               status.classList.add('oculto');
             }, 2000);
+            contenedorRespuesta.innerHTML = "<div>Elemento ELIMINADO!</div>";
           } else {
             console.log("ERROR else " + response.status);
             alert("ERROR " + response.status);
@@ -238,8 +269,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return html;
     }
 
-
+//  **************************************************
     // FUNCIONES ESPECIFICAS ligadas a los botones.
+//  **************************************************
 
     function agregarPaciente() {
         // Obtener los valores de los campos de entrada
@@ -262,14 +294,42 @@ document.addEventListener('DOMContentLoaded', function () {
         formPacientes.reset();
     }
 
+    function actualizarPaciente() {
+        // Obtener los valores de los campos de entrada
+        let paciente = {
+            id: idPInput.value,
+            nombre: nombreInput.value,
+            apellido: apellidoInput.value,
+            dni: dniInput.value,
+            fechaAlta: fechaAltaInput.value,
+            domicilio: {
+                calle: calleInput.value,
+                numero: numeroInput.value,
+                ciudad: ciudadInput.value,
+                departamento: departamentoInput.value
+            }
+        }
+
+        // Enviar solicitud POST al handler de agregar paciente
+        enviarDatos('PUT','http://localhost:8080/pacientes/actualizar', paciente);
+
+        formPacientes.reset();
+    }
+
     function listarPacientes() {
         listar("http://localhost:8080/pacientes", "");
     }
 
     function buscarPaciente() {
 
-        let id = idP.value;
+        let id = prompt("Ingrese el Id del paciente a buscar:")
         listar("http://localhost:8080/pacientes/", id);
+    }
+
+    function eliminarPaciente() {
+
+        let idE = prompt("Ingrese el Id del paciente a eliminar:")
+        eliminar("http://localhost:8080/pacientes/eliminar/", idE);
     }
 
     function agregarOdontologo() {
@@ -286,13 +346,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    function actualizarOdontologo() {
+
+        let odontologo = {
+            id: idOInput.value,
+            nombre: nombreOInput.value,
+            apellido: apellidoOInput.value,
+            matricula: matriculaInput.value
+        }
+
+        enviarDatos('PUT','http://localhost:8080/odontologos/actualizar', odontologo);
+
+        formOdontologos.reset();
+
+    }
+
+
     function listarOdontologos() {
         listar("http://localhost:8080/odontologos", "");
     }
 
     function buscarOdontologo() {
 
-        let id = idO.value;
+        let id = prompt("Ingrese el Id del odontólogo a buscar:")
         listar("http://localhost:8080/odontologos/", id);
     }
 
@@ -316,14 +392,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    function actualizarTurno() {
+
+        let turno = {
+            id: idTInput.value,
+            paciente: Number(pacienteIdInput.value),
+            odontologo: Number(odontologoIdInput.value),
+            fechaTurno: fechaTurnoInput.value
+        }
+
+        enviarDatos('PUT','http://localhost:8080/turnos/actualizar', turno);
+
+        formTurnos.reset();
+
+    }
+
     function listarTurnos() {
         listar("http://localhost:8080/turnos", "");
     }
 
     function buscarTurno() {
 
-        let id = idT.value;
+        let id = prompt("Ingrese el Id del Turno a buscar:")
         listar("http://localhost:8080/turnos/", id);
+    }
+
+    function eliminarTurno() {
+
+        let idE = prompt("Ingrese el Id del turno a eliminar:")
+        eliminar("http://localhost:8080/turnos/eliminar/", idE);
     }
 
 
