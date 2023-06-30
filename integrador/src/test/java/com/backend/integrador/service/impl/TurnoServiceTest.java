@@ -6,7 +6,6 @@ import com.backend.integrador.dto.TurnoDto;
 import com.backend.integrador.entity.Domicilio;
 import com.backend.integrador.entity.Odontologo;
 import com.backend.integrador.entity.Paciente;
-import com.backend.integrador.entity.Turno;
 import com.backend.integrador.exception.BadRequestException;
 import com.backend.integrador.exception.ResourceNotFoundException;
 import com.backend.integrador.repository.OdontologoRepository;
@@ -61,10 +60,6 @@ class TurnoServiceTest {
         Odontologo odontologoAAgregar = new Odontologo("Juan", "Gallego", "UY-12345678");
         OdontologoDto odontologoNvo = odontologoService.agregarOdontologo(odontologoAAgregar);
 
-        //Turno turno = new Turno(pacienteAAgregar, odontologoAAgregar, LocalDateTime.parse("2023-07-10T13:00"));
-        //Turno turnoNvo = turnoRepository.save(turno);
-        //TurnoDto turnoDto = new TurnoDto(turnoNvo.getId(),"1","1",turnoNvo.getFechaTurno());
-
         TurnoDto turnoDto = new TurnoDto(1L,"1","1",LocalDateTime.parse("2023-07-10T13:00"));
 
         TurnoDto turnoAAgregar = turnoService.nuevoTurno(turnoDto);
@@ -73,27 +68,6 @@ class TurnoServiceTest {
 
     }
 
-
-    /*    **** TEST USANDO REPOSITORIES EN VEZ DE SERVICES **** OK ****
-    void deberíaAgregarUnTurno() throws BadRequestException, ResourceNotFoundException {
-
-        Domicilio domicilio = new Domicilio("Belgrano", 125,"Colonia","Colonia");
-        Paciente pacienteAAgregar = new Paciente("Juan", "Gallego", "12345678", LocalDate.parse("2023-07-12"), domicilio);
-        Paciente pacienteNvo = pacienteRepository.save(pacienteAAgregar);
-
-        Odontologo odontologoAAgregar = new Odontologo("Juan", "Gallego", "UY-12345678");
-        Odontologo odontologoNvo = odontologoRepository.save(odontologoAAgregar);
-
-        Turno turno = new Turno(pacienteAAgregar, odontologoAAgregar, LocalDateTime.parse("2023-07-10T13:00"));
-        Turno turnoNvo = turnoRepository.save(turno);
-        TurnoDto turnoDto = new TurnoDto(turnoNvo.getId(),"1","1",turnoNvo.getFechaTurno());
-
-        TurnoDto turnoAAgregar = turnoService.nuevoTurno(turnoDto);
-
-        Assertions.assertTrue(turnoAAgregar != null);
-    }
-
-     */
 
     @Test
     @Order(2)

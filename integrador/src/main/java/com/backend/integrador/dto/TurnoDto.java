@@ -12,7 +12,6 @@ public class TurnoDto {
     private String paciente;
     private String odontologo;
 
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime fechaTurno;
 
 

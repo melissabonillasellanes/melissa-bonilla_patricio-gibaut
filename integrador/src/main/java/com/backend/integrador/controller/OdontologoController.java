@@ -1,19 +1,17 @@
 package com.backend.integrador.controller;
 
 import com.backend.integrador.dto.OdontologoDto;
-import com.backend.integrador.dto.PacienteDto;
 import com.backend.integrador.entity.Odontologo;
-import com.backend.integrador.entity.Paciente;
 import com.backend.integrador.exception.BadRequestException;
 import com.backend.integrador.exception.ResourceNotFoundException;
 import com.backend.integrador.service.impl.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin
@@ -29,6 +27,7 @@ public class OdontologoController {
     }
 
     @PostMapping("/agregar")
+    @Valid
     public ResponseEntity<OdontologoDto> agregarOdontologo(@RequestBody Odontologo odontologo) throws BadRequestException {
         OdontologoDto odontologoDS = odontologoService.agregarOdontologo(odontologo);
         return new ResponseEntity<>(odontologoDS, null, HttpStatus.CREATED);
@@ -47,6 +46,7 @@ public class OdontologoController {
 
 
     @PutMapping("/actualizar")
+    @Valid
     public ResponseEntity<OdontologoDto> actualizarOdontologo(@RequestBody Odontologo odontologo) throws BadRequestException {
         return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo), null, HttpStatus.OK);
     }
@@ -54,18 +54,9 @@ public class OdontologoController {
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
-        //return ResponseEntity.ok("Turno eliminado"); Esta versión devuelve 200 ok, es mas apropiado 204.
         return ResponseEntity.noContent().build();
     }
 
-    // ABM desde odontologo.html
-    // @GetMapping("/abm")
-    // @CrossOrigin(origins = "http://localhost:*")
-    // public ModelAndView welcome() {
-        // ModelAndView modelAndView = new ModelAndView("odontologo");
-        // modelAndView.addObject("nombre", "Usuario");
-  //      return modelAndView;
-//    }
 
 
 }

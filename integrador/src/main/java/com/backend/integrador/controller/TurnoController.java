@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin
@@ -17,7 +18,7 @@ import java.util.List;
 @RequestMapping("/turnos")
 public class TurnoController {
 
-    // private ITurnoService turnoService;  Por qué ??
+
     private TurnoService turnoService;
 
     @Autowired
@@ -27,6 +28,7 @@ public class TurnoController {
 
 
     @PostMapping("/nuevo")
+    @Valid
     public ResponseEntity<?> nuevoTurno(@RequestBody TurnoDto turnoIn) throws BadRequestException, ResourceNotFoundException {
         TurnoDto turnoDS = turnoService.nuevoTurno(turnoIn);
         return new ResponseEntity<>(turnoDS, null, HttpStatus.CREATED);
@@ -42,6 +44,7 @@ public class TurnoController {
     }
 
     @PutMapping("/actualizar")
+    @Valid
     public ResponseEntity<TurnoDto> actualizarPaciente(@RequestBody Turno turno) throws ResourceNotFoundException {
         return new ResponseEntity<>(turnoService.actualizarTurno(turno), null, HttpStatus.OK);
     }

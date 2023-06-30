@@ -1,9 +1,8 @@
 package com.backend.integrador.service.impl;
 
-import com.backend.integrador.dto.OdontologoDto;
+
 import com.backend.integrador.dto.PacienteDto;
 import com.backend.integrador.entity.Domicilio;
-import com.backend.integrador.entity.Odontologo;
 import com.backend.integrador.entity.Paciente;
 import com.backend.integrador.exception.BadRequestException;
 import com.backend.integrador.exception.ResourceNotFoundException;
@@ -14,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

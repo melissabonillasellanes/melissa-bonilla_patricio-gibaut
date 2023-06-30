@@ -1,6 +1,8 @@
 package com.backend.integrador.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "DOMICILIOS")
@@ -10,8 +12,13 @@ public class Domicilio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "La calle no puede ser nula")
+    @NotBlank(message = "Debe especificarse la calle")
     private String calle;
     private Integer numero;
+
+    @NotNull(message = "La Ciudad no puede ser nula")
+    @NotBlank(message = "Debe especificarse la ciudad")
     private String ciudad;
     private String departamento;
 

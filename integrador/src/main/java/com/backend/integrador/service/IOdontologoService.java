@@ -4,7 +4,7 @@ import com.backend.integrador.dto.OdontologoDto;
 import com.backend.integrador.entity.Odontologo;
 import com.backend.integrador.exception.BadRequestException;
 import com.backend.integrador.exception.ResourceNotFoundException;
-import org.springframework.web.client.ResourceAccessException;
+
 
 import java.util.List;
 

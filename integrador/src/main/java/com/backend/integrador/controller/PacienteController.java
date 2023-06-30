@@ -10,13 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
 
-    // La profe tenía     private IPacienteService pacienteService;  Por qué???
     private PacienteService pacienteService;
 
     @Autowired
@@ -25,6 +25,7 @@ public class PacienteController {
     }
 
     @PostMapping("/agregar")
+    @Valid
     public ResponseEntity<PacienteDto> agregarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
         ResponseEntity<PacienteDto> respuesta;
         PacienteDto pacienteDS = pacienteService.agregarPaciente(paciente);
@@ -39,6 +40,7 @@ public class PacienteController {
     }
 
     @PutMapping("/actualizar")
+    @Valid
     public ResponseEntity<PacienteDto> actualizarPaciente(@RequestBody Paciente paciente) throws ResourceNotFoundException {
         ResponseEntity<PacienteDto> respuesta;
         PacienteDto pacienteDto = pacienteService.actualizarPaciente(paciente);
@@ -62,12 +64,6 @@ public class PacienteController {
         return ResponseEntity.noContent().build();
     }
 
-    /*
-        @DeleteMapping("/eliminar/{id}")
-    public void eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
-        pacienteService.eliminarPaciente(id);
-    }
-     */
 
 }
 
